@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amarok.Shared", "src\Amarok.Shared\Amarok.Shared.csproj", "{1FCE1A28-F159-49EA-8F47-92A5FDFFAFDE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Amarok.Shared", "src\Tests.Amarok.Shared\Tests.Amarok.Shared.csproj", "{22B0507E-5916-435D-8D47-2E5E06C00FB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34C76F3A-BE4D-4DB9-B854-CC4EC86BFF16}"
+	ProjectSection(SolutionItems) = preProject
+		src\Amarok.Shared.licenseheader = src\Amarok.Shared.licenseheader
+		src\Global.ruleset = src\Global.ruleset
+		src\Minimal.ruleset = src\Minimal.ruleset
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{08E20F5F-9C3F-48D4-9607-C67CFE855A00}"
+	ProjectSection(SolutionItems) = preProject
+		doc\Documentation.md = doc\Documentation.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FCE1A28-F159-49EA-8F47-92A5FDFFAFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FCE1A28-F159-49EA-8F47-92A5FDFFAFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FCE1A28-F159-49EA-8F47-92A5FDFFAFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FCE1A28-F159-49EA-8F47-92A5FDFFAFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B0507E-5916-435D-8D47-2E5E06C00FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B0507E-5916-435D-8D47-2E5E06C00FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B0507E-5916-435D-8D47-2E5E06C00FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B0507E-5916-435D-8D47-2E5E06C00FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08E20F5F-9C3F-48D4-9607-C67CFE855A00} = {34C76F3A-BE4D-4DB9-B854-CC4EC86BFF16}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {962AF89D-565D-4CF7-B021-EFCF696AFCF9}
+	EndGlobalSection
+EndGlobal

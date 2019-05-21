@@ -1,0 +1,10 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.cr
+/bin
+obj
+*.user
+/_NCrunch_Amarok.Shared

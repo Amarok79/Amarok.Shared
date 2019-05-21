@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netcoreapp2.1;net471</TargetFrameworks>
+		<RootNamespace>Amarok</RootNamespace>
+		<CodeAnalysisRuleSet>..\Minimal.ruleset</CodeAnalysisRuleSet>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
+		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\bin\tests\</OutputPath>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<LangVersion>latest</LangVersion>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\bin\tests\</OutputPath>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\Amarok.Shared.licenseheader" Link="Amarok.Shared.licenseheader" />
+		<None Include="..\amarok.snk" Link="amarok.snk" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.0" />
+		<PackageReference Include="Moq" Version="4.10.1" />
+		<PackageReference Include="NCrunch.Framework" Version="3.17.0" />
+		<PackageReference Include="NFluent" Version="2.5.0" />
+		<PackageReference Include="NUnit" Version="3.12.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Amarok.Shared\Amarok.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Shared\" />
+	</ItemGroup>
+
+	<Choose>
+		<When Condition=" '$(Configuration)' != 'Debug' ">
+			<ItemGroup>
+				<PackageReference Include="SonarAnalyzer.CSharp">
+					<Version>7.13.0.8313</Version>
+					<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+					<PrivateAssets>all</PrivateAssets>
+				</PackageReference>
+			</ItemGroup>
+		</When>
+	</Choose>
+
+</Project>
