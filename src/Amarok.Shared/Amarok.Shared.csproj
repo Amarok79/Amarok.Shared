@@ -45,16 +45,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Shared\HexFormatter.cs" />
+	  <Compile Remove="Shared\StringBuilderPool.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="Amarok.Shared.v3.ncrunchproject" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\Amarok.Shared.licenseheader" Link="Amarok.Shared.licenseheader" />
 		<None Include="..\amarok.snk" Link="amarok.snk" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Shared\" />
 	</ItemGroup>
 
 	<Choose>
