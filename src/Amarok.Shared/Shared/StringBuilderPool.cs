@@ -17,7 +17,7 @@ namespace Amarok.Shared
 		// constants
 		internal const Int32 __initialCapacity = 512;
 		internal const Int32 __maxCapacity = 40 * 1024;
-		internal const Int32 __maxNumberOfItems = 32;
+		internal const Int32 __maxNumberOfItems = 64;
 
 		// static data
 		private static readonly ObjectPool<StringBuilder> sPool = new ObjectPool<StringBuilder>(
