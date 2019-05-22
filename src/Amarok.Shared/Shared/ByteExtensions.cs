@@ -24,7 +24,7 @@ namespace Amarok.Shared
 		/// A string representation of the given value, for example, "A7" or "F0".</returns>
 		public static String ToHex(this Byte value)
 		{
-			return HexFormatter.Format(value);
+			return HexFormatter.ToUpper(value);
 		}
 	}
 }

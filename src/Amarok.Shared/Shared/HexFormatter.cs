@@ -12,22 +12,43 @@ namespace Amarok.Shared
 {
 	internal static class HexFormatter
 	{
-		private static readonly String[] sStrings = new String[Byte.MaxValue + 1];
+		private static readonly String[] sLower = new String[Byte.MaxValue + 1];
+		private static readonly String[] sUpper = new String[Byte.MaxValue + 1];
 
 
 		static HexFormatter()
 		{
 			for (Int32 i = 0; i <= Byte.MaxValue; i++)
-				sStrings[i] = i.ToString("X2", CultureInfo.InvariantCulture);
+			{
+				sLower[i] = i.ToString("x2", CultureInfo.InvariantCulture);
+				sUpper[i] = i.ToString("X2", CultureInfo.InvariantCulture);
+			}
 		}
 
 
-		public static String Format(Byte value)
+		public static String ToLower(Byte value)
 		{
-			return sStrings[value];
+			return sLower[value];
 		}
 
-		public static String Format(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+		public static String ToUpper(Byte value)
+		{
+			return sUpper[value];
+		}
+
+
+		public static String ToLower(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+		{
+			return _Format(sLower, buffer, offset, count, delimiter);
+		}
+
+		public static String ToUpper(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+		{
+			return _Format(sUpper, buffer, offset, count, delimiter);
+		}
+
+
+		private static String _Format(String[] strings, Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
 			StringBuilder sb = null;
 			try
@@ -41,7 +62,7 @@ namespace Amarok.Shared
 					if (i > offset && (i - offset) % 8 == 0)
 						sb.Append(delimiter);
 
-					sb.Append(sStrings[buffer[i]]);
+					sb.Append(strings[buffer[i]]);
 				}
 
 				return sb.ToString();
