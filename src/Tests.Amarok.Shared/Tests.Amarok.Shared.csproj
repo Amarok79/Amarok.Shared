@@ -43,10 +43,6 @@
 		<ProjectReference Include="..\Amarok.Shared\Amarok.Shared.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Shared\" />
-	</ItemGroup>
-
 	<Choose>
 		<When Condition=" '$(Configuration)' != 'Debug' ">
 			<ItemGroup>
