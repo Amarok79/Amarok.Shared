@@ -4,6 +4,8 @@
  */
 
 using System;
+using System.Text;
+using System.Threading.Tasks;
 using NCrunch.Framework;
 using NFluent;
 using NUnit.Framework;
@@ -119,6 +121,19 @@ namespace Amarok.Shared
 				.IsEqualTo(StringBuilderPool.__maxCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(0);
+		}
+
+		[Test]
+		public void Stress()
+		{
+			const Int32 __count = StringBuilderPool.__maxNumberOfItems;
+
+			var objs = new StringBuilder[__count * 2];
+			for (Int32 i = 0; i < 100; i++)
+			{
+				Parallel.For(0, __count, x => objs[x] = StringBuilderPool.Allocate());
+				Parallel.For(0, __count, x => StringBuilderPool.Free(objs[x]));
+			}
 		}
 	}
 }
