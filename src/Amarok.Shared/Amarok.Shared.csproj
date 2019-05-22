@@ -46,7 +46,6 @@
 
 	<ItemGroup>
 	  <Compile Remove="Shared\HexFormatter.cs" />
-	  <Compile Remove="Shared\StringBuilderPool.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
