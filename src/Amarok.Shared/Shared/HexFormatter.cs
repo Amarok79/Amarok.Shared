@@ -12,6 +12,7 @@ namespace Amarok.Shared
 {
 	internal static class HexFormatter
 	{
+		// static data
 		private static readonly String[] sLower = new String[Byte.MaxValue + 1];
 		private static readonly String[] sUpper = new String[Byte.MaxValue + 1];
 
