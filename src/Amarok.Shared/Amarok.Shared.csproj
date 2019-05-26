@@ -53,6 +53,10 @@
 		<None Include="..\amarok.snk" Link="amarok.snk" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Amarok.Contracts" Version="1.0.0" />
+	</ItemGroup>
+
 	<Choose>
 		<When Condition=" '$(Configuration)' != 'Debug' ">
 			<ItemGroup>
