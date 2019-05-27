@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace Amarok.Shared
 {
-	[TestFixture, Serial]
+	[TestFixture, Serial, Isolated]
 	public class Test_StopwatchPool
 	{
 		[Test]
