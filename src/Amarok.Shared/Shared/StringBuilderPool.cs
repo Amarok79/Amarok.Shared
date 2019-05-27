@@ -15,14 +15,14 @@ namespace Amarok.Shared
 	public static class StringBuilderPool
 	{
 		// constants
-		internal const Int32 __initialCapacity = 512;
-		internal const Int32 __maxCapacity = 40 * 1024;
-		internal const Int32 __maxNumberOfItems = 64;
+		internal const Int32 InitialCapacity = 512;
+		internal const Int32 MaxCapacity = 40 * 1024;
+		internal const Int32 MaxNumberOfItems = 64;
 
 		// static data
 		private static readonly ObjectPool<StringBuilder> sPool = new ObjectPool<StringBuilder>(
-			() => new StringBuilder(__initialCapacity),
-			__maxNumberOfItems
+			() => new StringBuilder(InitialCapacity),
+			MaxNumberOfItems
 		);
 
 
@@ -49,8 +49,8 @@ namespace Amarok.Shared
 
 			builder.Clear();
 
-			if (builder.Capacity > __maxCapacity)
-				builder.Capacity = __maxCapacity;
+			if (builder.Capacity > MaxCapacity)
+				builder.Capacity = MaxCapacity;
 
 			sPool.Free(builder);
 		}

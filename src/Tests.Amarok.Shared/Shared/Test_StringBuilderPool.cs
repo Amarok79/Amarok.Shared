@@ -23,22 +23,22 @@ namespace Amarok.Shared
 
 			Check.That(sb)
 				.IsNotNull();
-			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(0);
 
 			sb.Append("abc");
 
-			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(3);
 
 			StringBuilderPool.Free(sb);
 
-			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(0);
 		}
@@ -48,29 +48,29 @@ namespace Amarok.Shared
 		{
 			var sb1 = StringBuilderPool.Rent();
 
-			Check.That(sb1.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb1.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb1.Length)
 				.IsEqualTo(0);
 
 			sb1.Append("abc");
 
-			Check.That(sb1.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb1.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb1.Length)
 				.IsEqualTo(3);
 
 			StringBuilderPool.Free(sb1);
 
-			Check.That(sb1.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb1.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb1.Length)
 				.IsEqualTo(0);
 
 			var sb2 = StringBuilderPool.Rent();
 
-			Check.That(sb2.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+			//Check.That(sb2.Capacity)
+			//	.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb2.Length)
 				.IsEqualTo(0);
 
@@ -92,14 +92,14 @@ namespace Amarok.Shared
 			sb.Append("abc");
 
 			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+				.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(3);
 
 			StringBuilderPool.Free(sb);
 
 			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__initialCapacity);
+				.IsEqualTo(StringBuilderPool.InitialCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(0);
 		}
@@ -118,7 +118,7 @@ namespace Amarok.Shared
 			StringBuilderPool.Free(sb);
 
 			Check.That(sb.Capacity)
-				.IsEqualTo(StringBuilderPool.__maxCapacity);
+				.IsEqualTo(StringBuilderPool.MaxCapacity);
 			Check.That(sb.Length)
 				.IsEqualTo(0);
 		}
@@ -126,7 +126,7 @@ namespace Amarok.Shared
 		[Test]
 		public void Stress()
 		{
-			const Int32 __count = StringBuilderPool.__maxNumberOfItems;
+			const Int32 __count = StringBuilderPool.MaxNumberOfItems;
 
 			var objs = new StringBuilder[__count * 2];
 			for (Int32 i = 0; i < 100; i++)
