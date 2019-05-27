@@ -54,7 +54,7 @@ namespace Amarok.Shared
 			StringBuilder sb = null;
 			try
 			{
-				sb = StringBuilderPool.Allocate();
+				sb = StringBuilderPool.Rent();
 
 				for (Int32 i = offset; i < offset + count; i++)
 				{

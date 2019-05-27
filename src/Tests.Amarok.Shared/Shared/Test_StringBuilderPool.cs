@@ -17,9 +17,9 @@ namespace Amarok.Shared
 	public class Test_StringBuilderPool
 	{
 		[Test]
-		public void Allocate_Free_SingleItem()
+		public void Rent_Free_SingleItem()
 		{
-			var sb = StringBuilderPool.Allocate();
+			var sb = StringBuilderPool.Rent();
 
 			Check.That(sb)
 				.IsNotNull();
@@ -44,9 +44,9 @@ namespace Amarok.Shared
 		}
 
 		[Test]
-		public void Allocate_Free_SingleItem_MultipleTimes()
+		public void Rent_Free_SingleItem_MultipleTimes()
 		{
-			var sb1 = StringBuilderPool.Allocate();
+			var sb1 = StringBuilderPool.Rent();
 
 			Check.That(sb1.Capacity)
 				.IsEqualTo(StringBuilderPool.__initialCapacity);
@@ -67,7 +67,7 @@ namespace Amarok.Shared
 			Check.That(sb1.Length)
 				.IsEqualTo(0);
 
-			var sb2 = StringBuilderPool.Allocate();
+			var sb2 = StringBuilderPool.Rent();
 
 			Check.That(sb2.Capacity)
 				.IsEqualTo(StringBuilderPool.__initialCapacity);
@@ -88,7 +88,7 @@ namespace Amarok.Shared
 		[Test]
 		public void Free_Clears_StringBuilder()
 		{
-			var sb = StringBuilderPool.Allocate();
+			var sb = StringBuilderPool.Rent();
 			sb.Append("abc");
 
 			Check.That(sb.Capacity)
@@ -107,7 +107,7 @@ namespace Amarok.Shared
 		[Test]
 		public void Free_Shrinks_StringBuilder()
 		{
-			var sb = StringBuilderPool.Allocate();
+			var sb = StringBuilderPool.Rent();
 			sb.Append(new String('A', 50 * 1024));
 
 			Check.That(sb.Capacity)
@@ -131,7 +131,7 @@ namespace Amarok.Shared
 			var objs = new StringBuilder[__count * 2];
 			for (Int32 i = 0; i < 100; i++)
 			{
-				Parallel.For(0, __count, x => objs[x] = StringBuilderPool.Allocate());
+				Parallel.For(0, __count, x => objs[x] = StringBuilderPool.Rent());
 				Parallel.For(0, __count, x => StringBuilderPool.Free(objs[x]));
 			}
 		}

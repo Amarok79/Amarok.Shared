@@ -29,7 +29,7 @@ namespace Amarok.Shared
 		/// <summary>
 		/// Returns a <see cref="StringBuilder"/> either from the pool or a newly created instance.
 		/// </summary>
-		public static StringBuilder Allocate()
+		public static StringBuilder Rent()
 		{
 			return sPool.Allocate();
 		}
