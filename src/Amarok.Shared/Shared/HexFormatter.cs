@@ -27,23 +27,23 @@ namespace Amarok.Shared
 		}
 
 
-		public static String ToLower(Byte value)
+		internal static String ToLower(Byte value)
 		{
 			return sLower[value];
 		}
 
-		public static String ToUpper(Byte value)
+		internal static String ToUpper(Byte value)
 		{
 			return sUpper[value];
 		}
 
 
-		public static String ToLower(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+		internal static String ToLower(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
 			return _Format(sLower, buffer, offset, count, delimiter);
 		}
 
-		public static String ToUpper(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+		internal static String ToUpper(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
 			return _Format(sUpper, buffer, offset, count, delimiter);
 		}
