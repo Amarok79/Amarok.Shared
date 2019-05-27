@@ -26,8 +26,10 @@ namespace Amarok.Shared
 
 		/// <summary>
 		/// Returns a <see cref="Stopwatch"/> either from the pool or a newly created instance.
+		/// 
+		/// The returned instance is not automatically started.
 		/// </summary>
-		public static Stopwatch Allocate()
+		public static Stopwatch Rent()
 		{
 			return sPool.Allocate();
 		}

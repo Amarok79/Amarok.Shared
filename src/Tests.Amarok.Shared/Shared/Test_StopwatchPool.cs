@@ -3,6 +3,9 @@
  * https://github.com/Amarok79/Amarok.Shared
  */
 
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using NCrunch.Framework;
 using NFluent;
 using NUnit.Framework;
@@ -14,9 +17,9 @@ namespace Amarok.Shared
 	public class Test_StopwatchPool
 	{
 		[Test]
-		public void Allocate_Free_SingleItem()
+		public void Rent_Free_SingleItem()
 		{
-			var sw = StopwatchPool.Allocate();
+			var sw = StopwatchPool.Rent();
 
 			Check.That(sw)
 				.IsNotNull();
@@ -35,9 +38,9 @@ namespace Amarok.Shared
 		}
 
 		[Test]
-		public void Allocate_Free_SingleItem_MultipleTimes()
+		public void Rent_Free_SingleItem_MultipleTimes()
 		{
-			var sw1 = StopwatchPool.Allocate();
+			var sw1 = StopwatchPool.Rent();
 
 			Check.That(sw1.IsRunning)
 				.IsFalse();
@@ -52,7 +55,7 @@ namespace Amarok.Shared
 			Check.That(sw1.IsRunning)
 				.IsFalse();
 
-			var sw2 = StopwatchPool.Allocate();
+			var sw2 = StopwatchPool.Rent();
 
 			Check.That(sw2.IsRunning)
 				.IsFalse();
@@ -71,7 +74,7 @@ namespace Amarok.Shared
 		[Test]
 		public void Free_Resets_Stopwatch()
 		{
-			var sw = StopwatchPool.Allocate();
+			var sw = StopwatchPool.Rent();
 			sw.Start();
 
 			Check.That(sw.IsRunning)
@@ -81,6 +84,19 @@ namespace Amarok.Shared
 
 			Check.That(sw.IsRunning)
 				.IsFalse();
+		}
+
+		[Test]
+		public void Stress()
+		{
+			const Int32 __count = StopwatchPool.__maxNumberOfItems;
+
+			var objs = new Stopwatch[__count * 2];
+			for (Int32 i = 0; i < 100; i++)
+			{
+				Parallel.For(0, __count, x => objs[x] = StopwatchPool.Rent());
+				Parallel.For(0, __count, x => StopwatchPool.Free(objs[x]));
+			}
 		}
 	}
 }
