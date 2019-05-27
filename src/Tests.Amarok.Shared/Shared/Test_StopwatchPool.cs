@@ -89,7 +89,7 @@ namespace Amarok.Shared
 		[Test]
 		public void Stress()
 		{
-			const Int32 __count = StopwatchPool.__maxNumberOfItems;
+			const Int32 __count = StopwatchPool.MaxNumberOfItems;
 
 			var objs = new Stopwatch[__count * 2];
 			for (Int32 i = 0; i < 100; i++)
