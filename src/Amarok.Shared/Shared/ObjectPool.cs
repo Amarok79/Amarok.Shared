@@ -1,7 +1,4 @@
-/* Copyright(c) 2019, Olaf Kober
- * Licensed under GNU Lesser General Public License v3.0 (LPGL-3.0).
- * https://github.com/Amarok79/Amarok.Shared
- */
+// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 // define TRACE_LEAKS to get additional diagnostics that can lead to the leak sources. note: it will
 // make everything about 2-3x slower
@@ -63,7 +60,7 @@ namespace Amarok.Shared
 
 		// Storage for the pool objects. The first item is stored in a dedicated field because we
 		// expect to be able to satisfy most requests from it.
-		private T _firstItem;
+		private T? _firstItem;
 		private readonly Element[] _items;
 
 		// factory is stored for the lifetime of the pool. We will call this only when pool needs to
@@ -143,7 +140,7 @@ namespace Amarok.Shared
 			// Note that the initial read is optimistically not synchronized. That is intentional. 
 			// We will interlock only when we have a candidate. in a worst case we may miss some
 			// recently returned objects. Not a big deal.
-			T inst = _firstItem;
+			T? inst = _firstItem;
 			if (inst == null || inst != Interlocked.CompareExchange(ref _firstItem, null, inst))
 			{
 				inst = AllocateSlow();
@@ -173,7 +170,7 @@ namespace Amarok.Shared
 				T inst = items[i].Value;
 				if (inst != null)
 				{
-					if (inst == Interlocked.CompareExchange(ref items[i].Value, null, inst))
+					if (inst == Interlocked.CompareExchange(ref items[i].Value, null!, inst))
 					{
 						return inst;
 					}
@@ -234,7 +231,7 @@ namespace Amarok.Shared
 		/// return a larger array to the pool than was originally allocated.
 		/// </summary>
 		[Conditional("DEBUG")]
-		internal void ForgetTrackedObject(T old, T replacement = null)
+		internal void ForgetTrackedObject(T old, T? replacement = null)
 		{
 #if DETECT_LEAKS
             LeakTracker tracker;
