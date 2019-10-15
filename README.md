@@ -56,7 +56,7 @@ String text = bytes.ToHex(" ");   // "0x11 0x22 0x33 0x44 0x55 0x66 0x77 0x88  0
 Provides a pool of pre-instantiated Stopwatch instances.
 
 ````cs
-Stopwatch? sw = null;
+Stopwatch sw = null;
 try
 {
   sw = StopwatchPool.Rent();
@@ -74,7 +74,7 @@ finally
 Provides a pool of pre-instantiated StringBuilder instances.
 
 ````cs
-StringBuilder? sb = null;
+StringBuilder sb = null;
 try
 {
   sb = StringBuilderPool.Rent();
