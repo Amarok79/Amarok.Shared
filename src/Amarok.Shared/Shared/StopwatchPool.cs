@@ -42,7 +42,7 @@ namespace Amarok.Shared
 		/// 
 		/// <param name="watch">
 		/// The instance to return. Null values are accepted and ignored.</param>
-		public static void Free(Stopwatch watch)
+		public static void Free(Stopwatch? watch)
 		{
 			if (watch == null)
 				return;

@@ -42,7 +42,7 @@ namespace Amarok.Shared
 		/// 
 		/// <param name="builder">
 		/// The instance to return. Null values are accepted and ignored.</param>
-		public static void Free(StringBuilder builder)
+		public static void Free(StringBuilder? builder)
 		{
 			if (builder == null)
 				return;
