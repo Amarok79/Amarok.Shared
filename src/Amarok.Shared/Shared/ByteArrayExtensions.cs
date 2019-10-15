@@ -3,6 +3,8 @@
  * https://github.com/Amarok79/Amarok.Shared
  */
 
+#pragma warning disable S4144 // Methods should not have identical implementations
+
 using System;
 using Amarok.Contracts;
 

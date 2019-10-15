@@ -3,6 +3,8 @@
  * https://github.com/Amarok79/Amarok.Shared
  */
 
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+
 using System;
 using Amarok.Contracts;
 
@@ -43,7 +45,7 @@ namespace Amarok.Shared
 		/// </summary>
 		public static BufferSpan From(Byte[] buffer, Int32 count)
 		{
-			Verify.IsValid(buffer, count);
+			Verify.ArraySegment(buffer, count);
 			return new BufferSpan(buffer, 0, count);
 		}
 
@@ -52,7 +54,7 @@ namespace Amarok.Shared
 		/// </summary>
 		public static BufferSpan From(Byte[] buffer, Int32 offset, Int32 count)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return new BufferSpan(buffer, offset, count);
 		}
 
