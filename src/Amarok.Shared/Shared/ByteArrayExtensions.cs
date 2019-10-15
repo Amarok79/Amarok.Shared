@@ -159,7 +159,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToHex(this Byte[] buffer, Int32 offset, Int32 count)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToUpper(buffer, offset, count, __defaultDelimiter);
 		}
 
@@ -185,7 +185,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToLowerHex(this Byte[] buffer, Int32 offset, Int32 count)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToLower(buffer, offset, count, __defaultDelimiter);
 		}
 
@@ -211,7 +211,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToUpperHex(this Byte[] buffer, Int32 offset, Int32 count)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToUpper(buffer, offset, count, __defaultDelimiter);
 		}
 
@@ -240,7 +240,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToHex(this Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToUpper(buffer, offset, count, delimiter);
 		}
 
@@ -268,7 +268,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToLowerHex(this Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToLower(buffer, offset, count, delimiter);
 		}
 
@@ -296,7 +296,7 @@ namespace Amarok.Shared
 		/// Values exceeding the inclusive upper limit are invalid.</exception>
 		public static String ToUpperHex(this Byte[] buffer, Int32 offset, Int32 count, String delimiter)
 		{
-			Verify.IsValid(buffer, offset, count);
+			Verify.ArraySegment(buffer, offset, count);
 			return HexFormatter.ToUpper(buffer, offset, count, delimiter);
 		}
 	}
