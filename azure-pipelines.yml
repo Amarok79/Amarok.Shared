@@ -23,8 +23,8 @@ steps:
   inputs:
     SonarCloud: Sonar
     organization: 'amarok79-github'
-    projectKey: 'Amarok79_Events'
-    projectName: Amarok.Events
+    projectKey: 'Amarok79_Shared'
+    projectName: Amarok.Shared
 
 - task: VSBuild@1
   inputs:
