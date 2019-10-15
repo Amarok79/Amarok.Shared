@@ -7,7 +7,7 @@
 		<Version>1.0.0</Version>
 		<Authors>Olaf Kober</Authors>
 		<Company>&lt;none&gt;</Company>
-		<Description>TBD</Description>
+		<Description>Various general purpose helpers, utilities and extensions that are commonly used.</Description>
 		<Copyright>Copyright (c) 2019, Olaf Kober</Copyright>
 		<PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Amarok79/Amarok.Shared</PackageProjectUrl>
@@ -70,8 +70,8 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
 		<PackageReference Include="Amarok.Contracts" Version="2.0.0" />
 		<PackageReference Include="SonarAnalyzer.CSharp" Version="7.17.0.9346">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 
