@@ -58,11 +58,21 @@
 	<ItemGroup>
 		<None Include="..\Amarok.Shared.licenseheader" Link="Amarok.Shared.licenseheader" />
 		<None Include="..\amarok.snk" Link="amarok.snk" />
+		<None Include="..\amarok.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\Amarok.Shared.licenseheader" Link="Amarok.Shared.licenseheader" />
+		<None Include="..\amarok.snk" Link="amarok.snk" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
 		<PackageReference Include="Amarok.Contracts" Version="2.0.0" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="7.17.0.9346">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 </Project>
