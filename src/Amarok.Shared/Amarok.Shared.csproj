@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<ProjectGuid>{7CFAD6F0-1F9D-4E97-A451-DB4B348DFDE2}</ProjectGuid>
@@ -9,7 +9,7 @@
 		<Company>&lt;none&gt;</Company>
 		<Description>Various general purpose helpers, utilities and extensions that are commonly used.</Description>
 		<Copyright>Copyright (c) 2019, Olaf Kober</Copyright>
-		<PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Amarok79/Amarok.Shared</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Amarok79/Amarok.Shared</RepositoryUrl>
 		<PackageIcon>amarok.png</PackageIcon>
@@ -67,9 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
-		<PackageReference Include="Amarok.Contracts" Version="2.0.0" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="7.17.0.9346">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+		<PackageReference Include="Amarok.Contracts" Version="3.0.2" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.12.0.21095">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
