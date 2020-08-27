@@ -12,7 +12,7 @@ This library contains various general purpose helpers, utilities and extensions.
 
 The library is redistributed as NuGet package: [Amarok.Shared](https://www.nuget.org/packages/Amarok.Shared/)
 
-The package provides strong-named binaries for *.NET Standard 2.0* only. Tests are generally performed with *.NET Framework 4.7.1*, *.NET Framework 4.8*, *.NET Core 2.1* and *.NET Core 3.0*.
+The package provides strong-named binaries for *.NET Standard 2.0* only. Tests are generally performed with *.NET Framework 4.7.1*, *.NET Framework 4.8*, *.NET Core 2.1* and *.NET Core 3.1*.
 
 
 ## Types of Interest
