@@ -3,19 +3,19 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Shared&metric=coverage)](https://sonarcloud.io/dashboard?id=Amarok79_Shared)
 [![NuGet](https://img.shields.io/nuget/v/Amarok.Shared.svg?logo=)](https://www.nuget.org/packages/Amarok.Shared/)
 
-## Introduction
+# Introduction
 
 This library contains various general purpose helpers, utilities and extensions.
 
 
-## Redistribution
+# Redistribution
 
 The library is redistributed as NuGet package: [Amarok.Shared](https://www.nuget.org/packages/Amarok.Shared/)
 
 The package provides strong-named binaries for *.NET Standard 2.0* only. Tests are generally performed with *.NET Framework 4.7.1*, *.NET Framework 4.8*, *.NET Core 2.1* and *.NET Core 3.1*.
 
 
-## Types of Interest
+# Types of Interest
 
 ### BufferSpan
 
