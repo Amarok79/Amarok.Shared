@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<ProjectGuid>{46EBAEB4-B3ED-44C3-9359-25555B13045B}</ProjectGuid>
-		<TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net471;net48</TargetFrameworks>
+		<TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net48</TargetFrameworks>
 		<RootNamespace>Amarok</RootNamespace>
-		<CodeAnalysisRuleSet>..\Minimal.ruleset</CodeAnalysisRuleSet>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
 		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
@@ -37,15 +36,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-		<PackageReference Include="Moq" Version="4.14.5" />
+		<PackageReference Include="Moq" Version="4.14.7" />
 		<PackageReference Include="NCrunch.Framework" Version="4.5.0" />
 		<PackageReference Include="NFluent" Version="2.7.0" />
 		<PackageReference Include="NUnit" Version="3.12.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.12.0.21095">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
