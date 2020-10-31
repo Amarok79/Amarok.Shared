@@ -15,7 +15,6 @@
 		<PackageIcon>amarok.png</PackageIcon>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<CodeAnalysisRuleSet>..\Global.ruleset</CodeAnalysisRuleSet>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags></PackageTags>
@@ -68,8 +67,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-		<PackageReference Include="Amarok.Contracts" Version="3.0.2" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.12.0.21095">
+		<PackageReference Include="Amarok.Contracts" Version="3.0.3" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.14.0.22654">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
