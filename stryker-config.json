@@ -15,7 +15,11 @@
             "progress",
             "dashboard"
         ],
-        "dashboard-api-key": "254159ff-0b77-4e02-a356-54b7d98ecb31",
+        "mutate": [
+            "!**/Amarok.Contracts/**",
+            "!**/ObjectPool.cs"
+        ],
+        "dashboard-api-key": "d2767f0d-a007-440d-becc-23f49778428a",
         "dashboard-project": "github.com/Amarok79/Amarok.Shared",
         "dashboard-version": "master"
     }
