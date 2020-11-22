@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<ProjectGuid>{46EBAEB4-B3ED-44C3-9359-25555B13045B}</ProjectGuid>
-		<TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net48</TargetFrameworks>
+		<TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net48;net5.0</TargetFrameworks>
 		<RootNamespace>Amarok</RootNamespace>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
@@ -15,7 +15,7 @@
 		<OutputPath>..\..\bin\tests\</OutputPath>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<LangVersion>latest</LangVersion>
-		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
 	</PropertyGroup>
 
@@ -35,9 +35,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-		<PackageReference Include="Moq" Version="4.14.7" />
-		<PackageReference Include="NCrunch.Framework" Version="4.5.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+		<PackageReference Include="Moq" Version="4.15.1" />
 		<PackageReference Include="NFluent" Version="2.7.0" />
 		<PackageReference Include="NUnit" Version="3.12.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
