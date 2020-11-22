@@ -42,9 +42,6 @@ using System.Runtime.CompilerServices;
 #endif
 
 
-#pragma warning disable S1227   // break statements should not be used except for switch cases
-#pragma warning disable S1066   // Collapsible "if" statements should be merged
-#pragma warning disable S1186   // Methods should not be empty
 #pragma warning disable IDE1006 // Naming Styles
 
 
@@ -205,8 +202,8 @@ namespace Amarok.Shared
         /// </remarks>
         internal void Free(T obj)
         {
-            _Validate(obj);
-            ForgetTrackedObject(obj);
+            //_Validate(obj);
+            //ForgetTrackedObject(obj);
 
             if (mFirstItem == null)
             {
@@ -237,35 +234,35 @@ namespace Amarok.Shared
             }
         }
 
-        /// <summary>
-        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
-        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
-        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
-        ///     allocated.
-        /// </summary>
-        [Conditional("DEBUG")]
-        internal void ForgetTrackedObject(T old, T? replacement = null)
-        {
-#if DETECT_LEAKS
-            LeakTracker tracker;
-            if (leakTrackers.TryGetValue(old, out tracker))
-            {
-                tracker.Dispose();
-                leakTrackers.Remove(old);
-            }
-            else
-            {
-                var trace = CaptureStackTrace();
-                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
-            }
+//        /// <summary>
+//        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
+//        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
+//        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
+//        ///     allocated.
+//        /// </summary>
+//        [Conditional("DEBUG")]
+//        internal void ForgetTrackedObject(T old, T? replacement = null)
+//        {
+//#if DETECT_LEAKS
+//            LeakTracker tracker;
+//            if (leakTrackers.TryGetValue(old, out tracker))
+//            {
+//                tracker.Dispose();
+//                leakTrackers.Remove(old);
+//            }
+//            else
+//            {
+//                var trace = CaptureStackTrace();
+//                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
+//            }
  
-            if (replacement != null)
-            {
-                tracker = new LeakTracker();
-                leakTrackers.Add(replacement, tracker);
-            }
-#endif
-        }
+//            if (replacement != null)
+//            {
+//                tracker = new LeakTracker();
+//                leakTrackers.Add(replacement, tracker);
+//            }
+//#endif
+//        }
 
 #if DETECT_LEAKS
         private static Lazy<Type> _stackTraceType = new Lazy<Type>(() => Type.GetType("System.Diagnostics.StackTrace"));
@@ -276,24 +273,24 @@ namespace Amarok.Shared
         }
 #endif
 
-        [Conditional("DEBUG")]
-        private void _Validate(Object obj)
-        {
-            Debug.Assert(obj != null, "freeing null?");
+        //[Conditional("DEBUG")]
+        //private void _Validate(Object obj)
+        //{
+        //    Debug.Assert(obj != null, "freeing null?");
 
-            Debug.Assert(mFirstItem != obj, "freeing twice?");
+        //    Debug.Assert(mFirstItem != obj, "freeing twice?");
 
-            Element[]? items = mItems;
+        //    Element[]? items = mItems;
 
-            for (var i = 0; i < items.Length; i++)
-            {
-                var value = items[i].Value;
+        //    for (var i = 0; i < items.Length; i++)
+        //    {
+        //        var value = items[i].Value;
 
-                if (value == null)
-                    return;
+        //        if (value == null)
+        //            return;
 
-                Debug.Assert(value != obj, "freeing twice?");
-            }
-        }
+        //        Debug.Assert(value != obj, "freeing twice?");
+        //    }
+        //}
     }
 }

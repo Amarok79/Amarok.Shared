@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
-
 using System;
 using Amarok.Contracts;
 

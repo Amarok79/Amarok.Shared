@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 
+#pragma warning disable CA1825 // Avoid zero-length array allocations
+
 using System;
 using NFluent;
 using NUnit.Framework;
