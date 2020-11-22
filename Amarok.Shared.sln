@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Amarok.Shared", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34C76F3A-BE4D-4DB9-B854-CC4EC86BFF16}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		src\Amarok.Shared.licenseheader = src\Amarok.Shared.licenseheader
-		azure-pipelines.yml = azure-pipelines.yml
+		.github\workflows\main.yml = .github\workflows\main.yml
 		README.md = README.md
+		stryker-config.json = stryker-config.json
 	EndProjectSection
 EndProject
 Global
