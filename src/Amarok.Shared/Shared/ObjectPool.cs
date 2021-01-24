@@ -234,35 +234,35 @@ namespace Amarok.Shared
             }
         }
 
-//        /// <summary>
-//        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
-//        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
-//        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
-//        ///     allocated.
-//        /// </summary>
-//        [Conditional("DEBUG")]
-//        internal void ForgetTrackedObject(T old, T? replacement = null)
-//        {
-//#if DETECT_LEAKS
-//            LeakTracker tracker;
-//            if (leakTrackers.TryGetValue(old, out tracker))
-//            {
-//                tracker.Dispose();
-//                leakTrackers.Remove(old);
-//            }
-//            else
-//            {
-//                var trace = CaptureStackTrace();
-//                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
-//            }
- 
-//            if (replacement != null)
-//            {
-//                tracker = new LeakTracker();
-//                leakTrackers.Add(replacement, tracker);
-//            }
-//#endif
-//        }
+        //        /// <summary>
+        //        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
+        //        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
+        //        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
+        //        ///     allocated.
+        //        /// </summary>
+        //        [Conditional("DEBUG")]
+        //        internal void ForgetTrackedObject(T old, T? replacement = null)
+        //        {
+        //#if DETECT_LEAKS
+        //            LeakTracker tracker;
+        //            if (leakTrackers.TryGetValue(old, out tracker))
+        //            {
+        //                tracker.Dispose();
+        //                leakTrackers.Remove(old);
+        //            }
+        //            else
+        //            {
+        //                var trace = CaptureStackTrace();
+        //                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
+        //            }
+
+        //            if (replacement != null)
+        //            {
+        //                tracker = new LeakTracker();
+        //                leakTrackers.Add(replacement, tracker);
+        //            }
+        //#endif
+        //        }
 
 #if DETECT_LEAKS
         private static Lazy<Type> _stackTraceType = new Lazy<Type>(() => Type.GetType("System.Diagnostics.StackTrace"));

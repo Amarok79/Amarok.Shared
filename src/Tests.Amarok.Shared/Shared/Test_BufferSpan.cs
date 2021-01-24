@@ -114,8 +114,8 @@ namespace Amarok.Shared
             public void Exception_When_BufferIsNull()
             {
                 Check.ThatCode(() => BufferSpan.From(null))
-                     .Throws<ArgumentNullException>()
-                     .WithProperty(x => x.ParamName, "buffer");
+                   .Throws<ArgumentNullException>()
+                   .WithProperty(x => x.ParamName, "buffer");
             }
         }
 
@@ -177,8 +177,8 @@ namespace Amarok.Shared
             public void Exception_When_BufferIsNull()
             {
                 Check.ThatCode(() => BufferSpan.From(null, 3))
-                     .Throws<ArgumentNullException>()
-                     .WithProperty(x => x.ParamName, "array");
+                   .Throws<ArgumentNullException>()
+                   .WithProperty(x => x.ParamName, "array");
             }
 
             [Test]
@@ -187,8 +187,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, -1))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "count");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "count");
             }
 
             [Test]
@@ -197,8 +197,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, 4))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "count");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "count");
             }
         }
 
@@ -260,8 +260,8 @@ namespace Amarok.Shared
             public void Exception_When_BufferIsNull()
             {
                 Check.ThatCode(() => BufferSpan.From(null, 1, 3))
-                     .Throws<ArgumentNullException>()
-                     .WithProperty(x => x.ParamName, "array");
+                   .Throws<ArgumentNullException>()
+                   .WithProperty(x => x.ParamName, "array");
             }
 
             [Test]
@@ -270,8 +270,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, -1, 3))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "offset");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "offset");
             }
 
             [Test]
@@ -280,8 +280,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, 0, -1))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "count");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "count");
             }
 
             [Test]
@@ -290,8 +290,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, 3, 0))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "offset");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "offset");
             }
 
             [Test]
@@ -300,8 +300,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, 0, 4))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "count");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "count");
             }
 
             [Test]
@@ -310,8 +310,8 @@ namespace Amarok.Shared
                 var buffer = new Byte[] { 0x11, 0x22, 0x33 };
 
                 Check.ThatCode(() => BufferSpan.From(buffer, 1, 3))
-                     .Throws<ArgumentOutOfRangeException>()
-                     .WithProperty(x => x.ParamName, "count");
+                   .Throws<ArgumentOutOfRangeException>()
+                   .WithProperty(x => x.ParamName, "count");
             }
         }
 
@@ -417,8 +417,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
             }
@@ -439,8 +439,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
             }
@@ -461,8 +461,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
             }
@@ -483,8 +483,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
             }
@@ -505,8 +505,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("66-77-88-DD-EE");
             }
@@ -527,8 +527,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("66-77-88-DD-EE");
             }
@@ -549,8 +549,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
             }
@@ -571,8 +571,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
             }
@@ -593,8 +593,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
             }
@@ -615,8 +615,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("22-33-44-AA-BB-CC-DD-EE");
             }
@@ -637,8 +637,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("22-33-44-AA-BB-CC-DD-EE");
             }
@@ -792,8 +792,8 @@ namespace Amarok.Shared
                 Check.That(result.IsEmpty).IsFalse();
 
                 Check.That(result.ToArray())
-                     .ContainsExactly(0x11, 0x22, 0x33, 0x44)
-                     .And.Not.IsSameReferenceAs(span.Buffer);
+                   .ContainsExactly(0x11, 0x22, 0x33, 0x44)
+                   .And.Not.IsSameReferenceAs(span.Buffer);
 
                 Check.That(result.ToString()).IsEqualTo("11-22-33-44");
             }
