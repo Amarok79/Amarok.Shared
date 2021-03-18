@@ -53,7 +53,13 @@ namespace Amarok.Shared
 
         internal static String ToLower(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
         {
-            return _Format(sLower, buffer, offset, count, delimiter);
+            return _Format(
+                sLower,
+                buffer,
+                offset,
+                count,
+                delimiter
+            );
         }
 
 
@@ -64,11 +70,23 @@ namespace Amarok.Shared
 
         internal static String ToUpper(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
         {
-            return _Format(sUpper, buffer, offset, count, delimiter);
+            return _Format(
+                sUpper,
+                buffer,
+                offset,
+                count,
+                delimiter
+            );
         }
 
 
-        private static String _Format(String[] strings, Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+        private static String _Format(
+            String[] strings,
+            Byte[] buffer,
+            Int32 offset,
+            Int32 count,
+            String delimiter
+        )
         {
             StringBuilder? sb = null;
 
