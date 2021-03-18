@@ -1,5 +1,8 @@
 ![CI](https://github.com/Amarok79/Amarok.Shared/workflows/CI/badge.svg)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FAmarok79%2FAmarok.Shared%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/Amarok79/Amarok.Shared/master)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Shared&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Shared)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Shared&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Shared)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Events&metric=security_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Events)
 [![NuGet](https://img.shields.io/nuget/v/Amarok.Shared.svg?logo=)](https://www.nuget.org/packages/Amarok.Shared/)
 
 # Introduction
