@@ -6,7 +6,7 @@
       "src/Tests.Amarok.Shared/Tests.Amarok.Shared.csproj"
     ],
     "mutate-level": "Standard",
-    "coverage-analysis": "perTest",
+    "coverage-analysis": "perTestInIsolation",
     "log-level": "info",
     "log-file": true,
     "ignore-methods": [],
