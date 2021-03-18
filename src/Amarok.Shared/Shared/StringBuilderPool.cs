@@ -39,7 +39,7 @@ namespace Amarok.Shared
         internal const Int32 MaxNumberOfItems = 64;
 
         // static data
-        private static readonly ObjectPool<StringBuilder> sPool = new ObjectPool<StringBuilder>(
+        private static readonly ObjectPool<StringBuilder> sPool = new(
             () => new StringBuilder(InitialCapacity),
             MaxNumberOfItems
         );

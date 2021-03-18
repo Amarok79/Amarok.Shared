@@ -22,6 +22,9 @@
  * SOFTWARE.
  */
 
+#pragma warning disable S1066 // Collapsible "if" statements should be merged
+#pragma warning disable S125  // Sections of code should not be commented out
+
 // define TRACE_LEAKS to get additional diagnostics that can lead to the leak sources. note: it will
 // make everything about 2-3x slower
 // 

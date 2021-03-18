@@ -158,15 +158,34 @@ namespace Amarok.Shared
 
         private BufferSpan _AppendToExistingBuffer(in BufferSpan data)
         {
-            System.Buffer.BlockCopy(data.Buffer, data.Offset, mBuffer, mOffset + mCount, data.Count);
+            System.Buffer.BlockCopy(
+                data.Buffer,
+                data.Offset,
+                mBuffer,
+                mOffset + mCount,
+                data.Count
+            );
 
             return new BufferSpan(mBuffer, mOffset, mCount + data.Count);
         }
 
         private BufferSpan _AppendToExistingBufferConsolidating(in BufferSpan data)
         {
-            System.Buffer.BlockCopy(mBuffer, mOffset, mBuffer, 0, mCount);
-            System.Buffer.BlockCopy(data.Buffer, data.Offset, mBuffer, mCount, data.Count);
+            System.Buffer.BlockCopy(
+                mBuffer,
+                mOffset,
+                mBuffer,
+                0,
+                mCount
+            );
+
+            System.Buffer.BlockCopy(
+                data.Buffer,
+                data.Offset,
+                mBuffer,
+                mCount,
+                data.Count
+            );
 
             return new BufferSpan(mBuffer, 0, mCount + data.Count);
         }
@@ -174,8 +193,22 @@ namespace Amarok.Shared
         private BufferSpan _AppendIntoNewBuffer(in BufferSpan data)
         {
             var buffer = new Byte[Count + data.Count];
-            System.Buffer.BlockCopy(mBuffer, mOffset, buffer, 0, mCount);
-            System.Buffer.BlockCopy(data.Buffer, data.Offset, buffer, mCount, data.Count);
+
+            System.Buffer.BlockCopy(
+                mBuffer,
+                mOffset,
+                buffer,
+                0,
+                mCount
+            );
+
+            System.Buffer.BlockCopy(
+                data.Buffer,
+                data.Offset,
+                buffer,
+                mCount,
+                data.Count
+            );
 
             return new BufferSpan(buffer, 0, mCount + data.Count);
         }
@@ -218,7 +251,14 @@ namespace Amarok.Shared
                 return Empty;
 
             var buffer = new Byte[Count];
-            System.Buffer.BlockCopy(Buffer, Offset, buffer, 0, Count);
+
+            System.Buffer.BlockCopy(
+                Buffer,
+                Offset,
+                buffer,
+                0,
+                Count
+            );
 
             return From(buffer, 0, buffer.Length);
         }
@@ -232,7 +272,14 @@ namespace Amarok.Shared
                 return Array.Empty<Byte>();
 
             var buffer = new Byte[Count];
-            System.Buffer.BlockCopy(Buffer, Offset, buffer, 0, Count);
+
+            System.Buffer.BlockCopy(
+                Buffer,
+                Offset,
+                buffer,
+                0,
+                Count
+            );
 
             return buffer;
         }
@@ -288,11 +335,13 @@ namespace Amarok.Shared
 
             if (index + count > mCount)
             {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
                 throw new ArgumentOutOfRangeException(
                     nameof(index) + "+" + nameof(count),
                     index + count,
                     "Outside of bounds."
                 );
+#pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one 
             }
         }
     }
