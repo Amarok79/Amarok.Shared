@@ -37,10 +37,7 @@ namespace Amarok.Shared
         internal const Int32 MaxNumberOfItems = 64;
 
         // static data
-        private static readonly ObjectPool<Stopwatch> sPool = new ObjectPool<Stopwatch>(
-            () => new Stopwatch(),
-            MaxNumberOfItems
-        );
+        private static readonly ObjectPool<Stopwatch> sPool = new(() => new Stopwatch(), MaxNumberOfItems);
 
 
         /// <summary>
