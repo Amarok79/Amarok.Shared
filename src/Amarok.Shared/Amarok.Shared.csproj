@@ -4,7 +4,7 @@
 		<ProjectGuid>{7CFAD6F0-1F9D-4E97-A451-DB4B348DFDE2}</ProjectGuid>
 		<TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
 		<RootNamespace>Amarok</RootNamespace>
-		<Version>2.1.0</Version>
+		<Version>2.1.1</Version>
 		<Authors>Olaf Kober</Authors>
 		<Company>&lt;none&gt;</Company>
 		<Description>Various general purpose helpers, utilities and extensions that are commonly used.</Description>
