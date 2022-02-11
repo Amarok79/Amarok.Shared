@@ -1,26 +1,4 @@
-/* MIT License
- * 
- * Copyright (c) 2020, Olaf Kober
- * https://github.com/Amarok79/Amarok.Shared
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
+// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
 
 #pragma warning disable S1066 // Collapsible "if" statements should be merged
 #pragma warning disable S125  // Sections of code should not be commented out
@@ -51,13 +29,15 @@ using System.Runtime.CompilerServices;
 namespace Amarok.Shared
 {
     /// <summary>
-    ///     Generic implementation of object pooling pattern with predefined pool size limit. The main purpose is that limited
-    ///     number of frequently used objects can be kept in the pool for further recycling. Notes: 1) it is not the goal to
-    ///     keep all returned objects. Pool is not meant for storage. If there is no space in the pool, extra returned objects
-    ///     will be dropped. 2) it is implied that if object was obtained from a pool, the caller will return it back in a
-    ///     relatively short time. Keeping checked out objects for long durations is ok, but reduces usefulness of pooling.
-    ///     Just new up your own. Not returning objects to the pool in not detrimental to the pool's work, but is a bad
-    ///     practice. Rationale: If there is no intent for reusing the object, do not use pool - just use "new".
+    ///     Generic implementation of object pooling pattern with predefined pool size limit. The main
+    ///     purpose is that limited number of frequently used objects can be kept in the pool for further
+    ///     recycling. Notes: 1) it is not the goal to keep all returned objects. Pool is not meant for
+    ///     storage. If there is no space in the pool, extra returned objects will be dropped. 2) it is
+    ///     implied that if object was obtained from a pool, the caller will return it back in a relatively
+    ///     short time. Keeping checked out objects for long durations is ok, but reduces usefulness of
+    ///     pooling. Just new up your own. Not returning objects to the pool in not detrimental to the
+    ///     pool's work, but is a bad practice. Rationale: If there is no intent for reusing the object, do
+    ///     not use pool - just use "new".
     /// </summary>
     internal class ObjectPool<T>
         where T : class
@@ -69,8 +49,8 @@ namespace Amarok.Shared
         }
 
         /// <remarks>
-        ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does not have that type
-        ///     (since it compiles against .NET 2.0).
+        ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does
+        ///     not have that type (since it compiles against .NET 2.0).
         /// </remarks>
         internal delegate T Factory();
 
@@ -149,8 +129,9 @@ namespace Amarok.Shared
         ///     Produces an instance.
         /// </summary>
         /// <remarks>
-        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that Free will try to
-        ///     store recycled objects close to the start thus statistically reducing how far we will typically search.
+        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
+        ///     Free will try to store recycled objects close to the start thus statistically reducing how far
+        ///     we will typically search.
         /// </remarks>
         internal T Allocate()
         {
@@ -161,7 +142,9 @@ namespace Amarok.Shared
             var inst = mFirstItem;
 
             if (inst == null || inst != Interlocked.CompareExchange(ref mFirstItem, null, inst))
+            {
                 inst = _AllocateSlow();
+            }
 
 #if DETECT_LEAKS
             var tracker = new LeakTracker();
@@ -177,19 +160,28 @@ namespace Amarok.Shared
 
         private T _AllocateSlow()
         {
-            Element[]? items = mItems;
+            var items = mItems;
 
             for (var i = 0; i < items.Length; i++)
             {
                 // Note that the initial read is optimistically not synchronized. That is intentional. 
                 // We will interlock only when we have a candidate. in a worst case we may miss some
                 // recently returned objects. Not a big deal.
-                T inst = items[i].Value;
+                var inst = items[i]
+                   .Value;
 
                 if (inst != null)
                 {
-                    if (inst == Interlocked.CompareExchange(ref items[i].Value, null!, inst))
+                    if (inst ==
+                        Interlocked.CompareExchange(
+                            ref items[i]
+                               .Value,
+                            null!,
+                            inst
+                        ))
+                    {
                         return inst;
+                    }
                 }
             }
 
@@ -200,8 +192,9 @@ namespace Amarok.Shared
         ///     Returns objects to the pool.
         /// </summary>
         /// <remarks>
-        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that Free will try to
-        ///     store recycled objects close to the start thus statistically reducing how far we will typically search in Allocate.
+        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
+        ///     Free will try to store recycled objects close to the start thus statistically reducing how far
+        ///     we will typically search in Allocate.
         /// </remarks>
         internal void Free(T obj)
         {
@@ -216,21 +209,26 @@ namespace Amarok.Shared
                 mFirstItem = obj;
             }
             else
+            {
                 _FreeSlow(obj);
+            }
         }
 
         private void _FreeSlow(T obj)
         {
-            Element[]? items = mItems;
+            var items = mItems;
 
             for (var i = 0; i < items.Length; i++)
             {
-                if (items[i].Value == null)
+                if (items[i]
+                       .Value ==
+                    null)
                 {
                     // Intentionally not using interlocked here. 
                     // In a worst case scenario two objects may be stored into same slot.
                     // It is very unlikely to happen and will only mean that one of the objects will get collected.
-                    items[i].Value = obj;
+                    items[i]
+                       .Value = obj;
 
                     break;
                 }
@@ -268,7 +266,8 @@ namespace Amarok.Shared
         //        }
 
 #if DETECT_LEAKS
-        private static Lazy<Type> _stackTraceType = new Lazy<Type>(() => Type.GetType("System.Diagnostics.StackTrace"));
+        private static Lazy<Type> _stackTraceType =
+ new Lazy<Type>(() => Type.GetType("System.Diagnostics.StackTrace"));
  
         private static object CaptureStackTrace()
         {

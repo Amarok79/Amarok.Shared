@@ -1,20 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<ProjectGuid>{46EBAEB4-B3ED-44C3-9359-25555B13045B}</ProjectGuid>
-		<TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net48;net5.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1;net48;net5.0;net6.0</TargetFrameworks>
 		<RootNamespace>Amarok</RootNamespace>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
 		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
-		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
-		<IsTestProject>true</IsTestProject>
-		<SonarQubeExclude>true</SonarQubeExclude>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<OutputPath>..\..\bin\tests\</OutputPath>
-		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
@@ -24,27 +19,27 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\Amarok.Shared.licenseheader" Link="Amarok.Shared.licenseheader" />
 		<None Include="..\amarok.snk" Link="amarok.snk" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="coverlet.collector" Version="3.0.3">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
-		<PackageReference Include="Moq" Version="4.16.1" />
-		<PackageReference Include="NCrunch.Framework" Version="4.7.0.4" />
-		<PackageReference Include="NFluent" Version="2.7.1" />
-		<PackageReference Include="NUnit" Version="3.13.1" />
-		<PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+        <PackageReference Include="coverlet.collector" Version="3.1.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="Moq" Version="4.16.1" />
+        <PackageReference Include="NCrunch.Framework" Version="4.7.0.4" />
+        <PackageReference Include="NFluent" Version="2.8.0" />
+        <PackageReference Include="NUnit" Version="3.13.2" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>

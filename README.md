@@ -1,8 +1,4 @@
 ![CI](https://github.com/Amarok79/Amarok.Shared/workflows/CI/badge.svg)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FAmarok79%2FAmarok.Shared%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/Amarok79/Amarok.Shared/master)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Shared&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Shared)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Shared&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Shared)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Amarok79_Amarok.Events&metric=security_rating)](https://sonarcloud.io/dashboard?id=Amarok79_Amarok.Events)
 [![NuGet](https://img.shields.io/nuget/v/Amarok.Shared.svg?logo=)](https://www.nuget.org/packages/Amarok.Shared/)
 
 # Introduction
@@ -14,7 +10,7 @@ This library contains various general purpose helpers, utilities and extensions.
 
 The library is redistributed as NuGet package: [Amarok.Shared](https://www.nuget.org/packages/Amarok.Shared/)
 
-The package provides strong-named binaries for *.NET Standard 2.0* and *.NET 5.0*. Tests are performed with *.NET Framework 4.8*, *.NET Core 2.1*, *.NET Core 3.1*, and *.NET 5.0*.
+The package provides strong-named binaries for *.NET Standard 2.0*, *.NET 5.0*, and *.NET 6.0*. Tests are performed with *.NET Framework 4.8*, *.NET Core 3.1*, *.NET 5.0*, and *.NET 6.0*.
 
 
 # Types of Interest
