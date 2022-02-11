@@ -306,13 +306,11 @@ public readonly struct BufferSpan
 
         if (index + count > mCount)
         {
-#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
             throw new ArgumentOutOfRangeException(
                 nameof(index) + "+" + nameof(count),
                 index + count,
                 "Outside of bounds."
             );
-#pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one 
         }
     }
 }

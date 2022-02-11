@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
 
-#pragma warning disable S4144 // Methods should not have identical implementations
-
 using System;
 using Amarok.Contracts;
 

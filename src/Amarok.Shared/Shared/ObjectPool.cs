@@ -1,8 +1,5 @@
 // Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
 
-#pragma warning disable S1066 // Collapsible "if" statements should be merged
-#pragma warning disable S125  // Sections of code should not be commented out
-
 // define TRACE_LEAKS to get additional diagnostics that can lead to the leak sources. note: it will
 // make everything about 2-3x slower
 // 
@@ -23,46 +20,46 @@ using System.Runtime.CompilerServices;
 #endif
 
 
-#pragma warning disable IDE1006 // Naming Styles
+namespace Amarok.Shared;
 
 
-namespace Amarok.Shared
+/// <summary>
+///     Generic implementation of object pooling pattern with predefined pool size limit. The main
+///     purpose is that limited number of frequently used objects can be kept in the pool for further
+///     recycling. Notes: 1) it is not the goal to keep all returned objects. Pool is not meant for
+///     storage. If there is no space in the pool, extra returned objects will be dropped. 2) it is
+///     implied that if object was obtained from a pool, the caller will return it back in a relatively
+///     short time. Keeping checked out objects for long durations is ok, but reduces usefulness of
+///     pooling. Just new up your own. Not returning objects to the pool in not detrimental to the
+///     pool's work, but is a bad practice. Rationale: If there is no intent for reusing the object, do
+///     not use pool - just use "new".
+/// </summary>
+internal class ObjectPool<T>
+    where T : class
 {
-    /// <summary>
-    ///     Generic implementation of object pooling pattern with predefined pool size limit. The main
-    ///     purpose is that limited number of frequently used objects can be kept in the pool for further
-    ///     recycling. Notes: 1) it is not the goal to keep all returned objects. Pool is not meant for
-    ///     storage. If there is no space in the pool, extra returned objects will be dropped. 2) it is
-    ///     implied that if object was obtained from a pool, the caller will return it back in a relatively
-    ///     short time. Keeping checked out objects for long durations is ok, but reduces usefulness of
-    ///     pooling. Just new up your own. Not returning objects to the pool in not detrimental to the
-    ///     pool's work, but is a bad practice. Rationale: If there is no intent for reusing the object, do
-    ///     not use pool - just use "new".
-    /// </summary>
-    internal class ObjectPool<T>
-        where T : class
+    [DebuggerDisplay("{Value,nq}")]
+    private struct Element
     {
-        [DebuggerDisplay("{Value,nq}")]
-        private struct Element
-        {
-            internal T Value;
-        }
+#pragma warning disable IDE1006 // Naming Styles
+        internal T Value;
+#pragma warning restore IDE1006 // Naming Styles
+    }
 
-        /// <remarks>
-        ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does
-        ///     not have that type (since it compiles against .NET 2.0).
-        /// </remarks>
-        internal delegate T Factory();
+    /// <remarks>
+    ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does
+    ///     not have that type (since it compiles against .NET 2.0).
+    /// </remarks>
+    internal delegate T Factory();
 
-        // Storage for the pool objects. The first item is stored in a dedicated field because we
-        // expect to be able to satisfy most requests from it.
-        private T? mFirstItem;
-        private readonly Element[] mItems;
+    // Storage for the pool objects. The first item is stored in a dedicated field because we
+    // expect to be able to satisfy most requests from it.
+    private T? mFirstItem;
+    private readonly Element[] mItems;
 
-        // factory is stored for the lifetime of the pool. We will call this only when pool needs to
-        // expand. compared to "new T()", Func gives more flexibility to implementers and faster
-        // than "new T()".
-        private readonly Factory mFactory;
+    // factory is stored for the lifetime of the pool. We will call this only when pool needs to
+    // expand. compared to "new T()", Func gives more flexibility to implementers and faster
+    // than "new T()".
+    private readonly Factory mFactory;
 
 #if DETECT_LEAKS
         private static readonly ConditionalWeakTable<T, LeakTracker> leakTrackers =
@@ -106,45 +103,45 @@ namespace Amarok.Shared
         }
 #endif
 
-        internal ObjectPool(Factory factory)
-            : this(factory, Environment.ProcessorCount * 2)
+    internal ObjectPool(Factory factory)
+        : this(factory, Environment.ProcessorCount * 2)
+    {
+    }
+
+    internal ObjectPool(Factory factory, Int32 size)
+    {
+        Debug.Assert(size >= 1);
+        mFactory = factory;
+        mItems   = new Element[size - 1];
+    }
+
+    private T _CreateInstance()
+    {
+        var inst = mFactory();
+
+        return inst;
+    }
+
+    /// <summary>
+    ///     Produces an instance.
+    /// </summary>
+    /// <remarks>
+    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
+    ///     Free will try to store recycled objects close to the start thus statistically reducing how far
+    ///     we will typically search.
+    /// </remarks>
+    internal T Allocate()
+    {
+        // PERF: Examine the first element. If that fails, AllocateSlow will look at the remaining elements.
+        // Note that the initial read is optimistically not synchronized. That is intentional. 
+        // We will interlock only when we have a candidate. in a worst case we may miss some
+        // recently returned objects. Not a big deal.
+        var inst = mFirstItem;
+
+        if (inst == null || inst != Interlocked.CompareExchange(ref mFirstItem, null, inst))
         {
+            inst = _AllocateSlow();
         }
-
-        internal ObjectPool(Factory factory, Int32 size)
-        {
-            Debug.Assert(size >= 1);
-            mFactory = factory;
-            mItems   = new Element[size - 1];
-        }
-
-        private T _CreateInstance()
-        {
-            var inst = mFactory();
-
-            return inst;
-        }
-
-        /// <summary>
-        ///     Produces an instance.
-        /// </summary>
-        /// <remarks>
-        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
-        ///     Free will try to store recycled objects close to the start thus statistically reducing how far
-        ///     we will typically search.
-        /// </remarks>
-        internal T Allocate()
-        {
-            // PERF: Examine the first element. If that fails, AllocateSlow will look at the remaining elements.
-            // Note that the initial read is optimistically not synchronized. That is intentional. 
-            // We will interlock only when we have a candidate. in a worst case we may miss some
-            // recently returned objects. Not a big deal.
-            var inst = mFirstItem;
-
-            if (inst == null || inst != Interlocked.CompareExchange(ref mFirstItem, null, inst))
-            {
-                inst = _AllocateSlow();
-            }
 
 #if DETECT_LEAKS
             var tracker = new LeakTracker();
@@ -155,115 +152,115 @@ namespace Amarok.Shared
             tracker.Trace = frame;
 #endif
 #endif
-            return inst;
-        }
+        return inst;
+    }
 
-        private T _AllocateSlow()
+    private T _AllocateSlow()
+    {
+        var items = mItems;
+
+        for (var i = 0; i < items.Length; i++)
         {
-            var items = mItems;
+            // Note that the initial read is optimistically not synchronized. That is intentional. 
+            // We will interlock only when we have a candidate. in a worst case we may miss some
+            // recently returned objects. Not a big deal.
+            var inst = items[i]
+               .Value;
 
-            for (var i = 0; i < items.Length; i++)
+            if (inst != null)
             {
-                // Note that the initial read is optimistically not synchronized. That is intentional. 
-                // We will interlock only when we have a candidate. in a worst case we may miss some
-                // recently returned objects. Not a big deal.
-                var inst = items[i]
-                   .Value;
-
-                if (inst != null)
+                if (inst ==
+                    Interlocked.CompareExchange(
+                        ref items[i]
+                           .Value,
+                        null!,
+                        inst
+                    ))
                 {
-                    if (inst ==
-                        Interlocked.CompareExchange(
-                            ref items[i]
-                               .Value,
-                            null!,
-                            inst
-                        ))
-                    {
-                        return inst;
-                    }
+                    return inst;
                 }
             }
-
-            return _CreateInstance();
         }
 
-        /// <summary>
-        ///     Returns objects to the pool.
-        /// </summary>
-        /// <remarks>
-        ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
-        ///     Free will try to store recycled objects close to the start thus statistically reducing how far
-        ///     we will typically search in Allocate.
-        /// </remarks>
-        internal void Free(T obj)
-        {
-            //_Validate(obj);
-            //ForgetTrackedObject(obj);
+        return _CreateInstance();
+    }
 
-            if (mFirstItem == null)
+    /// <summary>
+    ///     Returns objects to the pool.
+    /// </summary>
+    /// <remarks>
+    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
+    ///     Free will try to store recycled objects close to the start thus statistically reducing how far
+    ///     we will typically search in Allocate.
+    /// </remarks>
+    internal void Free(T obj)
+    {
+        //_Validate(obj);
+        //ForgetTrackedObject(obj);
+
+        if (mFirstItem == null)
+        {
+            // Intentionally not using interlocked here. 
+            // In a worst case scenario two objects may be stored into same slot.
+            // It is very unlikely to happen and will only mean that one of the objects will get collected.
+            mFirstItem = obj;
+        }
+        else
+        {
+            _FreeSlow(obj);
+        }
+    }
+
+    private void _FreeSlow(T obj)
+    {
+        var items = mItems;
+
+        for (var i = 0; i < items.Length; i++)
+        {
+            if (items[i]
+                   .Value ==
+                null)
             {
                 // Intentionally not using interlocked here. 
                 // In a worst case scenario two objects may be stored into same slot.
                 // It is very unlikely to happen and will only mean that one of the objects will get collected.
-                mFirstItem = obj;
-            }
-            else
-            {
-                _FreeSlow(obj);
-            }
-        }
+                items[i]
+                   .Value = obj;
 
-        private void _FreeSlow(T obj)
-        {
-            var items = mItems;
-
-            for (var i = 0; i < items.Length; i++)
-            {
-                if (items[i]
-                       .Value ==
-                    null)
-                {
-                    // Intentionally not using interlocked here. 
-                    // In a worst case scenario two objects may be stored into same slot.
-                    // It is very unlikely to happen and will only mean that one of the objects will get collected.
-                    items[i]
-                       .Value = obj;
-
-                    break;
-                }
+                break;
             }
         }
+    }
 
-        //        /// <summary>
-        //        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
-        //        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
-        //        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
-        //        ///     allocated.
-        //        /// </summary>
-        //        [Conditional("DEBUG")]
-        //        internal void ForgetTrackedObject(T old, T? replacement = null)
-        //        {
-        //#if DETECT_LEAKS
-        //            LeakTracker tracker;
-        //            if (leakTrackers.TryGetValue(old, out tracker))
-        //            {
-        //                tracker.Dispose();
-        //                leakTrackers.Remove(old);
-        //            }
-        //            else
-        //            {
-        //                var trace = CaptureStackTrace();
-        //                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
-        //            }
+    //        /// <summary>
+    //        ///     Removes an object from leak tracking. This is called when an object is returned to the pool.  It may also be
+    //        ///     explicitly called if an object allocated from the pool is intentionally not being returned to the pool.  This can
+    //        ///     be of use with pooled arrays if the consumer wants to return a larger array to the pool than was originally
+    //        ///     allocated.
+    //        /// </summary>
+    //        [Conditional("DEBUG")]
+    //        internal void ForgetTrackedObject(T old, T? replacement = null)
+    //        {
+    //#if DETECT_LEAKS
+    //            LeakTracker tracker;
+    //            if (leakTrackers.TryGetValue(old, out tracker))
+    //            {
+    //                tracker.Dispose();
+    //                leakTrackers.Remove(old);
+    //            }
+    //            else
+    //            {
+    //                var trace = CaptureStackTrace();
+    //                Debug.WriteLine($"TRACEOBJECTPOOLLEAKS_BEGIN\nObject of type {typeof(T)} was freed, but was not from pool. \n Callstack: \n {trace} TRACEOBJECTPOOLLEAKS_END");
+    //            }
 
-        //            if (replacement != null)
-        //            {
-        //                tracker = new LeakTracker();
-        //                leakTrackers.Add(replacement, tracker);
-        //            }
-        //#endif
-        //        }
+    //            if (replacement != null)
+    //            {
+    //                tracker = new LeakTracker();
+    //                leakTrackers.Add(replacement, tracker);
+    //            }
+    //#endif
+    //        }
 
 #if DETECT_LEAKS
         private static Lazy<Type> _stackTraceType =
@@ -275,24 +272,23 @@ namespace Amarok.Shared
         }
 #endif
 
-        //[Conditional("DEBUG")]
-        //private void _Validate(Object obj)
-        //{
-        //    Debug.Assert(obj != null, "freeing null?");
+    //[Conditional("DEBUG")]
+    //private void _Validate(Object obj)
+    //{
+    //    Debug.Assert(obj != null, "freeing null?");
 
-        //    Debug.Assert(mFirstItem != obj, "freeing twice?");
+    //    Debug.Assert(mFirstItem != obj, "freeing twice?");
 
-        //    Element[]? items = mItems;
+    //    Element[]? items = mItems;
 
-        //    for (var i = 0; i < items.Length; i++)
-        //    {
-        //        var value = items[i].Value;
+    //    for (var i = 0; i < items.Length; i++)
+    //    {
+    //        var value = items[i].Value;
 
-        //        if (value == null)
-        //            return;
+    //        if (value == null)
+    //            return;
 
-        //        Debug.Assert(value != obj, "freeing twice?");
-        //    }
-        //}
-    }
+    //        Debug.Assert(value != obj, "freeing twice?");
+    //    }
+    //}
 }
