@@ -40,9 +40,7 @@ internal class ObjectPool<T>
     [DebuggerDisplay("{Value,nq}")]
     private struct Element
     {
-#pragma warning disable IDE1006 // Naming Styles
         internal T Value;
-#pragma warning restore IDE1006 // Naming Styles
     }
 
     /// <remarks>
