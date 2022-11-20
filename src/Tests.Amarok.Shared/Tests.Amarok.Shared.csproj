@@ -1,49 +1,49 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
+    <PropertyGroup>
         <TargetFrameworks>net48;net6.0;net7.0</TargetFrameworks>
-		<RootNamespace>Amarok</RootNamespace>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
-		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
-	</PropertyGroup>
+        <RootNamespace>Amarok</RootNamespace>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
+        <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<OutputPath>..\..\bin\tests\</OutputPath>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
+    <PropertyGroup>
+        <OutputPath>..\..\bin\tests\</OutputPath>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-	</PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+    </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<WarningsAsErrors />
-		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-	</PropertyGroup>
+        <WarningsAsErrors />
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="..\amarok.snk" Link="amarok.snk" />
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="..\amarok.snk" Link="amarok.snk" />
+    </ItemGroup>
 
-	<ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="3.1.2">
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector" Version="3.2.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-        <PackageReference Include="Moq" Version="4.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+        <PackageReference Include="Moq" Version="4.18.2" />
         <PackageReference Include="NCrunch.Framework" Version="4.7.0.4" />
         <PackageReference Include="NFluent" Version="2.8.0" />
-        <PackageReference Include="NUnit" Version="3.13.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-	</ItemGroup>
+        <PackageReference Include="NUnit" Version="3.13.3" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.3.1" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Amarok.Shared\Amarok.Shared.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Amarok.Shared\Amarok.Shared.csproj" />
+    </ItemGroup>
 
 </Project>
