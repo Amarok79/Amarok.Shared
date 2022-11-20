@@ -47,13 +47,7 @@ internal static class HexFormatter
     }
 
 
-    private static String _Format(
-        String[] strings,
-        Byte[] buffer,
-        Int32 offset,
-        Int32 count,
-        String delimiter
-    )
+    private static String _Format(String[] strings, Byte[] buffer, Int32 offset, Int32 count, String delimiter)
     {
         StringBuilder? sb = null;
 

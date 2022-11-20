@@ -18,27 +18,23 @@ public class Test_StringBuilderPool
     {
         var sb = StringBuilderPool.Rent();
 
-        Check.That(sb)
-           .IsNotNull();
+        Check.That(sb).IsNotNull();
 
         //Check.That(sb.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb.Length)
-           .IsEqualTo(0);
+        Check.That(sb.Length).IsEqualTo(0);
 
         sb.Append("abc");
 
         //Check.That(sb.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb.Length)
-           .IsEqualTo(3);
+        Check.That(sb.Length).IsEqualTo(3);
 
         StringBuilderPool.Free(sb);
 
         //Check.That(sb.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb.Length)
-           .IsEqualTo(0);
+        Check.That(sb.Length).IsEqualTo(0);
     }
 
     [Test]
@@ -48,39 +44,33 @@ public class Test_StringBuilderPool
 
         //Check.That(sb1.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb1.Length)
-           .IsEqualTo(0);
+        Check.That(sb1.Length).IsEqualTo(0);
 
         sb1.Append("abc");
 
         //Check.That(sb1.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb1.Length)
-           .IsEqualTo(3);
+        Check.That(sb1.Length).IsEqualTo(3);
 
         StringBuilderPool.Free(sb1);
 
         //Check.That(sb1.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb1.Length)
-           .IsEqualTo(0);
+        Check.That(sb1.Length).IsEqualTo(0);
 
         var sb2 = StringBuilderPool.Rent();
 
         //Check.That(sb2.Capacity)
         //	.IsEqualTo(StringBuilderPool.InitialCapacity);
-        Check.That(sb2.Length)
-           .IsEqualTo(0);
+        Check.That(sb2.Length).IsEqualTo(0);
 
-        Check.That(sb2)
-           .IsSameReferenceAs(sb1);
+        Check.That(sb2).IsSameReferenceAs(sb1);
     }
 
     [Test]
     public void Free_Ignores_Null()
     {
-        Check.ThatCode(() => StringBuilderPool.Free(null))
-           .DoesNotThrow();
+        Check.ThatCode(() => StringBuilderPool.Free(null)).DoesNotThrow();
     }
 
     [Test]
@@ -89,19 +79,15 @@ public class Test_StringBuilderPool
         var sb = StringBuilderPool.Rent();
         sb.Append("abc");
 
-        Check.That(sb.Capacity)
-           .IsEqualTo(StringBuilderPool.InitialCapacity);
+        Check.That(sb.Capacity).IsEqualTo(StringBuilderPool.InitialCapacity);
 
-        Check.That(sb.Length)
-           .IsEqualTo(3);
+        Check.That(sb.Length).IsEqualTo(3);
 
         StringBuilderPool.Free(sb);
 
-        Check.That(sb.Capacity)
-           .IsEqualTo(StringBuilderPool.InitialCapacity);
+        Check.That(sb.Capacity).IsEqualTo(StringBuilderPool.InitialCapacity);
 
-        Check.That(sb.Length)
-           .IsEqualTo(0);
+        Check.That(sb.Length).IsEqualTo(0);
     }
 
     [Test]
@@ -110,19 +96,15 @@ public class Test_StringBuilderPool
         var sb = StringBuilderPool.Rent();
         sb.Append(new String('A', 50 * 1024));
 
-        Check.That(sb.Capacity)
-           .IsEqualTo(50 * 1024);
+        Check.That(sb.Capacity).IsEqualTo(50 * 1024);
 
-        Check.That(sb.Length)
-           .IsEqualTo(50 * 1024);
+        Check.That(sb.Length).IsEqualTo(50 * 1024);
 
         StringBuilderPool.Free(sb);
 
-        Check.That(sb.Capacity)
-           .IsEqualTo(StringBuilderPool.MaxCapacity);
+        Check.That(sb.Capacity).IsEqualTo(StringBuilderPool.MaxCapacity);
 
-        Check.That(sb.Length)
-           .IsEqualTo(0);
+        Check.That(sb.Length).IsEqualTo(0);
     }
 
     [Test]

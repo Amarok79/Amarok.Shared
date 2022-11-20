@@ -18,21 +18,17 @@ public class Test_StopwatchPool
     {
         var sw = StopwatchPool.Rent();
 
-        Check.That(sw)
-           .IsNotNull();
+        Check.That(sw).IsNotNull();
 
-        Check.That(sw.IsRunning)
-           .IsFalse();
+        Check.That(sw.IsRunning).IsFalse();
 
         sw.Start();
 
-        Check.That(sw.IsRunning)
-           .IsTrue();
+        Check.That(sw.IsRunning).IsTrue();
 
         StopwatchPool.Free(sw);
 
-        Check.That(sw.IsRunning)
-           .IsFalse();
+        Check.That(sw.IsRunning).IsFalse();
     }
 
     [Test]
@@ -40,33 +36,27 @@ public class Test_StopwatchPool
     {
         var sw1 = StopwatchPool.Rent();
 
-        Check.That(sw1.IsRunning)
-           .IsFalse();
+        Check.That(sw1.IsRunning).IsFalse();
 
         sw1.Start();
 
-        Check.That(sw1.IsRunning)
-           .IsTrue();
+        Check.That(sw1.IsRunning).IsTrue();
 
         StopwatchPool.Free(sw1);
 
-        Check.That(sw1.IsRunning)
-           .IsFalse();
+        Check.That(sw1.IsRunning).IsFalse();
 
         var sw2 = StopwatchPool.Rent();
 
-        Check.That(sw2.IsRunning)
-           .IsFalse();
+        Check.That(sw2.IsRunning).IsFalse();
 
-        Check.That(sw2)
-           .IsSameReferenceAs(sw1);
+        Check.That(sw2).IsSameReferenceAs(sw1);
     }
 
     [Test]
     public void Free_Ignores_Null()
     {
-        Check.ThatCode(() => StopwatchPool.Free(null))
-           .DoesNotThrow();
+        Check.ThatCode(() => StopwatchPool.Free(null)).DoesNotThrow();
     }
 
     [Test]
@@ -75,13 +65,11 @@ public class Test_StopwatchPool
         var sw = StopwatchPool.Rent();
         sw.Start();
 
-        Check.That(sw.IsRunning)
-           .IsTrue();
+        Check.That(sw.IsRunning).IsTrue();
 
         StopwatchPool.Free(sw);
 
-        Check.That(sw.IsRunning)
-           .IsFalse();
+        Check.That(sw.IsRunning).IsFalse();
     }
 
     [Test]

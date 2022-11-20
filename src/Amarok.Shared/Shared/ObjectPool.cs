@@ -112,7 +112,7 @@ internal class ObjectPool<T>
     {
         Debug.Assert(size >= 1);
         mFactory = factory;
-        mItems   = new Element[size - 1];
+        mItems = new Element[size - 1];
     }
 
     private T _CreateInstance()
@@ -164,18 +164,11 @@ internal class ObjectPool<T>
             // Note that the initial read is optimistically not synchronized. That is intentional. 
             // We will interlock only when we have a candidate. in a worst case we may miss some
             // recently returned objects. Not a big deal.
-            var inst = items[i]
-               .Value;
+            var inst = items[i].Value;
 
             if (inst != null)
             {
-                if (inst ==
-                    Interlocked.CompareExchange(
-                        ref items[i]
-                           .Value,
-                        null!,
-                        inst
-                    ))
+                if (inst == Interlocked.CompareExchange(ref items[i].Value, null!, inst))
                 {
                     return inst;
                 }
@@ -217,15 +210,12 @@ internal class ObjectPool<T>
 
         for (var i = 0; i < items.Length; i++)
         {
-            if (items[i]
-                   .Value ==
-                null)
+            if (items[i].Value == null)
             {
                 // Intentionally not using interlocked here. 
                 // In a worst case scenario two objects may be stored into same slot.
                 // It is very unlikely to happen and will only mean that one of the objects will get collected.
-                items[i]
-                   .Value = obj;
+                items[i].Value = obj;
 
                 break;
             }

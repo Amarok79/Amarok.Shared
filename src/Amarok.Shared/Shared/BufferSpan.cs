@@ -105,7 +105,7 @@ public readonly struct BufferSpan
     {
         mBuffer = buffer;
         mOffset = offset;
-        mCount  = count;
+        mCount = count;
     }
 
 
