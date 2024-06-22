@@ -1,6 +1,6 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
-#pragma warning disable CA1825 // Avoid zero-length array allocations
+#pragma warning disable CA1825  // Avoid zero-length array allocations
 #pragma warning disable IDE0230 // Use UTF-8 string literal
 
 using System;

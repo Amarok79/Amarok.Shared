@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 using System;
 using System.Globalization;
@@ -62,7 +62,7 @@ internal static class HexFormatter
                     sb.Append(delimiter);
                 }
 
-                if (i > offset && ( i - offset ) % 8 == 0)
+                if (i > offset && (i - offset) % 8 == 0)
                 {
                     sb.Append(delimiter);
                 }

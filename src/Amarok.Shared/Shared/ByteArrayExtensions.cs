@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 using System;
 using Amarok.Contracts;
@@ -8,7 +8,7 @@ namespace Amarok.Shared;
 
 
 /// <summary>
-///     This type provides extension methods for <see cref="Byte"/> arrays.
+///     This type provides extension methods for <see cref="byte"/> arrays.
 /// </summary>
 public static class ByteArrayExtensions
 {
@@ -170,7 +170,7 @@ public static class ByteArrayExtensions
     /// </param>
     /// 
     /// <returns>
-    ///     A string representation of the given byte array..
+    ///     A string representation of the given byte array.
     /// </returns>
     /// 
     /// <exception cref="ArgumentNullException">

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 using System;
 
@@ -7,7 +7,7 @@ namespace Amarok.Shared;
 
 
 /// <summary>
-///     This type provides extension methods for <see cref="Byte"/>.
+///     This type provides extension methods for <see cref="byte"/>.
 /// </summary>
 public static class ByteExtensions
 {

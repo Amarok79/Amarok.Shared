@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 using System;
 using Amarok.Contracts;
@@ -22,7 +22,7 @@ public readonly struct BufferSpan
     /// <summary>
     ///     Returns an empty buffer span.
     /// </summary>
-    public static BufferSpan Empty { get; } = new(Array.Empty<Byte>(), 0, 0);
+    public static BufferSpan Empty { get; } = new([], 0, 0);
 
 
     /// <summary>
@@ -59,7 +59,7 @@ public readonly struct BufferSpan
     /// <summary>
     ///     Gets the underlying byte array containing data.
     /// </summary>
-    public Byte[] Buffer => mBuffer ?? Array.Empty<Byte>();
+    public Byte[] Buffer => mBuffer ?? [];
 
     /// <summary>
     ///     Gets the length of the underlying byte array.
@@ -229,7 +229,7 @@ public readonly struct BufferSpan
     {
         if (IsEmpty)
         {
-            return Array.Empty<Byte>();
+            return [];
         }
 
         var buffer = new Byte[Count];

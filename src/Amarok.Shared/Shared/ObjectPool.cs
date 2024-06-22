@@ -1,4 +1,4 @@
-// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 // define TRACE_LEAKS to get additional diagnostics that can lead to the leak sources. note: it will
 // make everything about 2-3x slower
@@ -13,8 +13,6 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
-
-
 #if DETECT_LEAKS
 using System.Runtime.CompilerServices;
 #endif
