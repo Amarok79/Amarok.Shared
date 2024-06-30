@@ -22,15 +22,13 @@ namespace Amarok.Shared;
 
 
 /// <summary>
-///     Generic implementation of object pooling pattern with predefined pool size limit. The main
-///     purpose is that limited number of frequently used objects can be kept in the pool for further
-///     recycling. Notes: 1) it is not the goal to keep all returned objects. Pool is not meant for
-///     storage. If there is no space in the pool, extra returned objects will be dropped. 2) it is
-///     implied that if object was obtained from a pool, the caller will return it back in a relatively
-///     short time. Keeping checked out objects for long durations is ok, but reduces usefulness of
-///     pooling. Just new up your own. Not returning objects to the pool in not detrimental to the
-///     pool's work, but is a bad practice. Rationale: If there is no intent for reusing the object, do
-///     not use pool - just use "new".
+///     Generic implementation of object pooling pattern with predefined pool size limit. The main purpose is that limited
+///     number of frequently used objects can be kept in the pool for further recycling. Notes: 1) it is not the goal to
+///     keep all returned objects. Pool is not meant for storage. If there is no space in the pool, extra returned objects
+///     will be dropped. 2) it is implied that if object was obtained from a pool, the caller will return it back in a
+///     relatively short time. Keeping checked out objects for long durations is ok, but reduces usefulness of pooling.
+///     Just new up your own. Not returning objects to the pool in not detrimental to the pool's work, but is a bad
+///     practice. Rationale: If there is no intent for reusing the object, do not use pool - just use "new".
 /// </summary>
 internal class ObjectPool<T>
     where T : class
@@ -42,8 +40,8 @@ internal class ObjectPool<T>
     }
 
     /// <remarks>
-    ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does
-    ///     not have that type (since it compiles against .NET 2.0).
+    ///     Not using System.Func{T} because this file is linked into the (debugger) Formatter, which does not have that type
+    ///     (since it compiles against .NET 2.0).
     /// </remarks>
     internal delegate T Factory();
 
@@ -108,7 +106,7 @@ internal class ObjectPool<T>
     {
         Debug.Assert(size >= 1);
         mFactory = factory;
-        mItems = new Element[size - 1];
+        mItems   = new Element[size - 1];
     }
 
     private T _CreateInstance()
@@ -122,9 +120,8 @@ internal class ObjectPool<T>
     ///     Produces an instance.
     /// </summary>
     /// <remarks>
-    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
-    ///     Free will try to store recycled objects close to the start thus statistically reducing how far
-    ///     we will typically search.
+    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that Free will try to
+    ///     store recycled objects close to the start thus statistically reducing how far we will typically search.
     /// </remarks>
     internal T Allocate()
     {
@@ -178,9 +175,8 @@ internal class ObjectPool<T>
     ///     Returns objects to the pool.
     /// </summary>
     /// <remarks>
-    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that
-    ///     Free will try to store recycled objects close to the start thus statistically reducing how far
-    ///     we will typically search in Allocate.
+    ///     Search strategy is a simple linear probing which is chosen for it cache-friendliness. Note that Free will try to
+    ///     store recycled objects close to the start thus statistically reducing how far we will typically search in Allocate.
     /// </remarks>
     internal void Free(T obj)
     {

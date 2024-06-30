@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022, Olaf Kober <olaf.kober@outlook.com>
+﻿// Copyright (c) 2024, Olaf Kober <olaf.kober@outlook.com>
 
 using System;
 using System.Text;
@@ -33,8 +33,8 @@ public static class StringBuilderPool
     }
 
     /// <summary>
-    ///     Returns the specified <see cref="StringBuilder"/> to the pool. The <see cref="StringBuilder"/>
-    ///     instance is cleared as part of this.
+    ///     Returns the specified <see cref="StringBuilder"/> to the pool. The <see cref="StringBuilder"/> instance is cleared
+    ///     as part of this.
     /// </summary>
     /// 
     /// <param name="builder">

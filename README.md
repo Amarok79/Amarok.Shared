@@ -5,19 +5,19 @@
 
 This library contains various general purpose helpers, utilities and extensions.
 
-
 # Redistribution
 
 The library is redistributed as NuGet package: [Amarok.Shared](https://www.nuget.org/packages/Amarok.Shared/)
 
-The package provides strong-named binaries for *.NET Standard 2.0*, *.NET 6.0*, *.NET 7.0*, and *.NET 8.0*. Tests are performed with *.NET Framework 4.8*, *.NET 6.0*, *.NET 7.0*, and *.NET 8.0*.
-
+The package provides strong-named binaries for *.NET Standard 2.0*, *.NET 6.0*, *.NET 7.0*, and *.NET 8.0*. Tests are
+performed with *.NET Framework 4.8*, *.NET 6.0*, *.NET 7.0*, and *.NET 8.0*.
 
 # Types of Interest
 
 ### BufferSpan
 
-A memory-efficient value type pointing to a span (segment) in a byte array. Provides APIs for appending or slicing. Tuned to reduce memory allocations.
+A memory-efficient value type pointing to a span (segment) in a byte array. Provides APIs for appending or slicing.
+Tuned to reduce memory allocations.
 
 ````cs
 var a = BufferSpan.From(0x11, 0x22);
@@ -30,7 +30,7 @@ b.IsEmpty     // false
 b.ToArray()   // 0x33, 0x44, 0x55; allocates new byte array
 b.ToString()  // 33-44-55
 
-var c = a.Append(b);    // 0x11, 0x22, 0x33, 0x44, 0x55; re-uses byte array if big enough, 
+var c = a.Append(b);    // 0x11, 0x22, 0x33, 0x44, 0x55; re-uses byte array if big enough,
                         //                               otherwise allocates new byte array
 c = c.Discard(1);       // 0x22, 0x33, 0x44, 0x55; re-uses byte array
 c = c.Slice(1, 2);      // 0x33, 0x44; re-uses byte array
@@ -58,7 +58,7 @@ Stopwatch sw = null;
 try
 {
   sw = StopwatchPool.Rent();
-  
+
   // use stop watch
 }
 finally
@@ -76,9 +76,9 @@ StringBuilder sb = null;
 try
 {
   sb = StringBuilderPool.Rent();
-  
+
   // use string builder
-  
+
   var result = sb.ToString();
 }
 finally

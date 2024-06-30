@@ -58,242 +58,122 @@ public class Test_HexFormatter
         Check.That(HexFormatter.ToLower(new Byte[] { 0x11, 0x22, 0x33 }, 1, 2, "-")).IsEqualTo("22-33");
 
         Check.That(HexFormatter.ToLower(new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77 }, 0, 7, "-"))
-           .IsEqualTo("11-22-33-44-55-66-77");
+            .IsEqualTo("11-22-33-44-55-66-77");
 
         Check.That(HexFormatter.ToLower(new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88 }, 0, 8, "-"))
-           .IsEqualTo("11-22-33-44-55-66-77-88");
+            .IsEqualTo("11-22-33-44-55-66-77-88");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     9,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     15,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     15,
                     " "
                 )
             )
-           .IsEqualTo("11 22 33 44 55 66 77 88  99 aa bb cc dd ee ff");
+            .IsEqualTo("11 22 33 44 55 66 77 88  99 aa bb cc dd ee ff");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     16,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff-11");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff-11");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff-11--22");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-aa-bb-cc-dd-ee-ff-11--22");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     ":"
                 )
             )
-           .IsEqualTo("11:22:33:44:55:66:77:88::99:aa:bb:cc:dd:ee:ff:11::22");
+            .IsEqualTo("11:22:33:44:55:66:77:88::99:aa:bb:cc:dd:ee:ff:11::22");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     String.Empty
                 )
             )
-           .IsEqualTo("112233445566778899aabbccddeeff1122");
+            .IsEqualTo("112233445566778899aabbccddeeff1122");
 
         Check.That(
                 HexFormatter.ToLower(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     7,
                     10,
                     "-"
                 )
             )
-           .IsEqualTo("88-99-aa-bb-cc-dd-ee-ff--11-22");
+            .IsEqualTo("88-99-aa-bb-cc-dd-ee-ff--11-22");
     }
 
     [Test]
@@ -312,241 +192,121 @@ public class Test_HexFormatter
         Check.That(HexFormatter.ToUpper(new Byte[] { 0x11, 0x22, 0x33 }, 1, 2, "-")).IsEqualTo("22-33");
 
         Check.That(HexFormatter.ToUpper(new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77 }, 0, 7, "-"))
-           .IsEqualTo("11-22-33-44-55-66-77");
+            .IsEqualTo("11-22-33-44-55-66-77");
 
         Check.That(HexFormatter.ToUpper(new Byte[] { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88 }, 0, 8, "-"))
-           .IsEqualTo("11-22-33-44-55-66-77-88");
+            .IsEqualTo("11-22-33-44-55-66-77-88");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     9,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     15,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     15,
                     " "
                 )
             )
-           .IsEqualTo("11 22 33 44 55 66 77 88  99 AA BB CC DD EE FF");
+            .IsEqualTo("11 22 33 44 55 66 77 88  99 AA BB CC DD EE FF");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     16,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF-11");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF-11");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     "-"
                 )
             )
-           .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF-11--22");
+            .IsEqualTo("11-22-33-44-55-66-77-88--99-AA-BB-CC-DD-EE-FF-11--22");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     ":"
                 )
             )
-           .IsEqualTo("11:22:33:44:55:66:77:88::99:AA:BB:CC:DD:EE:FF:11::22");
+            .IsEqualTo("11:22:33:44:55:66:77:88::99:AA:BB:CC:DD:EE:FF:11::22");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     0,
                     17,
                     String.Empty
                 )
             )
-           .IsEqualTo("112233445566778899AABBCCDDEEFF1122");
+            .IsEqualTo("112233445566778899AABBCCDDEEFF1122");
 
         Check.That(
                 HexFormatter.ToUpper(
                     new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
                     },
                     7,
                     10,
                     "-"
                 )
             )
-           .IsEqualTo("88-99-AA-BB-CC-DD-EE-FF--11-22");
+            .IsEqualTo("88-99-AA-BB-CC-DD-EE-FF--11-22");
     }
 }

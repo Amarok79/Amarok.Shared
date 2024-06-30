@@ -8,8 +8,7 @@ namespace Amarok.Shared;
 
 
 /// <summary>
-///     This type represents a span of bytes, specified by offset and count, in an underlying byte
-///     array.
+///     This type represents a span of bytes, specified by offset and count, in an underlying byte array.
 /// </summary>
 public readonly struct BufferSpan
 {
@@ -105,7 +104,7 @@ public readonly struct BufferSpan
     {
         mBuffer = buffer;
         mOffset = offset;
-        mCount = count;
+        mCount  = count;
     }
 
 
@@ -170,8 +169,7 @@ public readonly struct BufferSpan
     }
 
     /// <summary>
-    ///     Returns a new span with the given number of bytes discarded from the beginning of existing
-    ///     data.
+    ///     Returns a new span with the given number of bytes discarded from the beginning of existing data.
     /// </summary>
     public BufferSpan Discard(Int32 bytes)
     {
