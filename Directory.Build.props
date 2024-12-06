@@ -43,12 +43,4 @@
         <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(MSBuildProjectName.StartsWith('Benchmarks.'))">
-        <OutputPath>..\..\bin\benchmark</OutputPath>
-        <Nullable>Disable</Nullable>
-        <GenerateDocumentationFile>False</GenerateDocumentationFile>
-        <IsPackable>False</IsPackable>
-        <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-    </PropertyGroup>
-
 </Project>
