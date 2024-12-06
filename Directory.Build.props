@@ -15,27 +15,28 @@
         <Copyright>Copyright (c) 2019, Olaf Kober</Copyright>
     </PropertyGroup>
 
+
     <PropertyGroup>
-        <OutputPath>..\..\bin\lib</OutputPath>
+        <RootDir>$([MSBuild]::NormalizeDirectory($(MSBuildThisFileDirectory)))</RootDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <OutputPath>$(RootDir)bin\lib</OutputPath>
+        <PackageOutputPath>$(RootDir)out</PackageOutputPath>
         <Nullable>Enable</Nullable>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <IsPackable>True</IsPackable>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
         <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\amarok.snk</AssemblyOriginatorKeyFile>
-        <Deterministic>True</Deterministic>
+        <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)src\amarok.snk</AssemblyOriginatorKeyFile>
+        <PublishRepositoryUrl>True</PublishRepositoryUrl>
+        <EmbedUntrackedSources>True</EmbedUntrackedSources>
+        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(MSBuildProjectName.StartsWith('Tests.'))">
-        <OutputPath>..\..\bin\tests</OutputPath>
-        <Nullable>Disable</Nullable>
-        <GenerateDocumentationFile>False</GenerateDocumentationFile>
-        <IsPackable>False</IsPackable>
-        <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(MSBuildProjectName.StartsWith('Benchmarks.'))">
-        <OutputPath>..\..\bin\benchmark</OutputPath>
+    <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+        <OutputPath>$(RootDir)bin\tests</OutputPath>
         <Nullable>Disable</Nullable>
         <GenerateDocumentationFile>False</GenerateDocumentationFile>
         <IsPackable>False</IsPackable>

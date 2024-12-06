@@ -1,29 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net6.0;net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
     <PropertyGroup>
+        <PackageIcon>amarok.png</PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/Amarok79/Amarok.Shared</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Amarok79/Amarok.Shared</RepositoryUrl>
-        <PackageIcon>amarok.png</PackageIcon>
-        <PublishRepositoryUrl>True</PublishRepositoryUrl>
-        <EmbedUntrackedSources>True</EmbedUntrackedSources>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\amarok.snk" Link="amarok.snk"/>
-        <None Include="..\amarok.png" Pack="true" PackagePath="\"/>
+        <None Include="..\amarok.snk" Link="amarok.snk" />
+        <None Include="..\amarok.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
-        <PackageReference Include="Amarok.Contracts" Version="6.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+        <PackageReference Include="Amarok.Contracts" Version="7.0.0" PrivateAssets="All" />
     </ItemGroup>
 
 </Project>
