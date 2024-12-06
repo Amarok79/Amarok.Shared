@@ -21,7 +21,7 @@ public readonly struct BufferSpan
     /// <summary>
     ///     Returns an empty buffer span.
     /// </summary>
-    public static BufferSpan Empty { get; } = new([], 0, 0);
+    public static BufferSpan Empty { get; } = new([ ], 0, 0);
 
 
     /// <summary>
@@ -58,7 +58,7 @@ public readonly struct BufferSpan
     /// <summary>
     ///     Gets the underlying byte array containing data.
     /// </summary>
-    public Byte[] Buffer => mBuffer ?? [];
+    public Byte[] Buffer => mBuffer ?? [ ];
 
     /// <summary>
     ///     Gets the length of the underlying byte array.
@@ -122,21 +122,15 @@ public readonly struct BufferSpan
     public BufferSpan Append(in BufferSpan data)
     {
         if (data.IsEmpty)
-        {
             return this;
-        }
 
         var freeBytes = FreeBytes - data.Count;
 
         if (freeBytes >= 0)
-        {
             return _AppendToExistingBuffer(data);
-        }
 
         if (-freeBytes <= Offset)
-        {
             return _AppendToExistingBufferConsolidating(data);
-        }
 
         return _AppendIntoNewBuffer(data);
     }
@@ -176,14 +170,10 @@ public readonly struct BufferSpan
         _VerifyCount(bytes);
 
         if (bytes == 0)
-        {
             return this;
-        }
 
         if (bytes == mCount)
-        {
             return new BufferSpan(mBuffer, 0, 0);
-        }
 
         return new BufferSpan(mBuffer, mOffset + bytes, mCount - bytes);
     }
@@ -196,9 +186,7 @@ public readonly struct BufferSpan
         _VerifyIndexCount(index, count);
 
         if (count == mCount)
-        {
             return this;
-        }
 
         return new BufferSpan(mBuffer, mOffset + index, count);
     }
@@ -209,9 +197,7 @@ public readonly struct BufferSpan
     public BufferSpan Clone()
     {
         if (IsEmpty)
-        {
             return Empty;
-        }
 
         var buffer = new Byte[Count];
 
@@ -226,9 +212,7 @@ public readonly struct BufferSpan
     public Byte[] ToArray()
     {
         if (IsEmpty)
-        {
-            return [];
-        }
+            return [ ];
 
         var buffer = new Byte[Count];
 
@@ -243,9 +227,7 @@ public readonly struct BufferSpan
     public override String ToString()
     {
         if (IsEmpty)
-        {
             return "<empty>";
-        }
 
         return HexFormatter.ToUpper(mBuffer, mOffset, mCount, "-");
     }
@@ -256,9 +238,7 @@ public readonly struct BufferSpan
     public String ToString(String delimiter)
     {
         if (IsEmpty)
-        {
             return "<empty>";
-        }
 
         return HexFormatter.ToUpper(mBuffer, mOffset, mCount, delimiter);
     }
@@ -267,40 +247,28 @@ public readonly struct BufferSpan
     private void _VerifyIndex(Int32 index)
     {
         if (index < 0)
-        {
             throw new ArgumentOutOfRangeException(nameof(index), index, "Outside of bounds.");
-        }
 
         if (index >= mCount)
-        {
             throw new ArgumentOutOfRangeException(nameof(index), index, "Outside of bounds.");
-        }
     }
 
     private void _VerifyCount(Int32 count)
     {
         if (count < 0)
-        {
             throw new ArgumentOutOfRangeException(nameof(count), count, "Outside of bounds.");
-        }
 
         if (count > mCount)
-        {
             throw new ArgumentOutOfRangeException(nameof(count), count, "Outside of bounds.");
-        }
     }
 
     private void _VerifyIndexCount(Int32 index, Int32 count)
     {
         if (index < 0 || index > mCount)
-        {
             throw new ArgumentOutOfRangeException(nameof(index), index, "Outside of bounds.");
-        }
 
         if (count < 0 || count > mCount)
-        {
             throw new ArgumentOutOfRangeException(nameof(count), count, "Outside of bounds.");
-        }
 
         if (index + count > mCount)
         {
