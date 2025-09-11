@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-        <PackageReference Include="Amarok.Contracts" Version="7.0.0" PrivateAssets="All" />
+        <PackageReference Include="Amarok.Contracts" Version="7.1.0" PrivateAssets="All" />
     </ItemGroup>
 
 </Project>
