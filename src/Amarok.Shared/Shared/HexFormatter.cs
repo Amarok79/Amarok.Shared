@@ -32,7 +32,13 @@ internal static class HexFormatter
 
     internal static String ToLower(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
     {
-        return _Format(sLower, buffer, offset, count, delimiter);
+        return _Format(
+            sLower,
+            buffer,
+            offset,
+            count,
+            delimiter
+        );
     }
 
 
@@ -43,11 +49,23 @@ internal static class HexFormatter
 
     internal static String ToUpper(Byte[] buffer, Int32 offset, Int32 count, String delimiter)
     {
-        return _Format(sUpper, buffer, offset, count, delimiter);
+        return _Format(
+            sUpper,
+            buffer,
+            offset,
+            count,
+            delimiter
+        );
     }
 
 
-    private static String _Format(String[] strings, Byte[] buffer, Int32 offset, Int32 count, String delimiter)
+    private static String _Format(
+        String[] strings,
+        Byte[] buffer,
+        Int32 offset,
+        Int32 count,
+        String delimiter
+    )
     {
         StringBuilder? sb = null;
 
@@ -58,10 +76,14 @@ internal static class HexFormatter
             for (var i = offset; i < offset + count; i++)
             {
                 if (sb.Length > 0)
+                {
                     sb.Append(delimiter);
+                }
 
                 if (i > offset && (i - offset) % 8 == 0)
+                {
                     sb.Append(delimiter);
+                }
 
                 sb.Append(strings[buffer[i]]);
             }

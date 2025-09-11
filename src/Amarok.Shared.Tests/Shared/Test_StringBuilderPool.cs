@@ -112,12 +112,12 @@ public class Test_StringBuilderPool
     {
         const Int32 count = StringBuilderPool.MaxNumberOfItems;
 
-        var objs = new StringBuilder[count * 2];
+        var coll = new StringBuilder[count * 2];
 
         for (var i = 0; i < 100; i++)
         {
-            Parallel.For(0, count, x => objs[x] = StringBuilderPool.Rent());
-            Parallel.For(0, count, x => StringBuilderPool.Free(objs[x]));
+            Parallel.For(0, count, x => coll[x] = StringBuilderPool.Rent());
+            Parallel.For(0, count, x => StringBuilderPool.Free(coll[x]));
         }
     }
 }

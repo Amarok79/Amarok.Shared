@@ -17,7 +17,7 @@ public class Test_HexFormatter
     [Test]
     public void Format_Byte_ToLower()
     {
-        Check.That<String>(HexFormatter.ToLower(0x00)).IsEqualTo("00");
+        Check.That(HexFormatter.ToLower(0x00)).IsEqualTo("00");
 
         Check.That(HexFormatter.ToLower(0x01)).IsEqualTo("01");
 
@@ -45,113 +45,26 @@ public class Test_HexFormatter
     [Test]
     public void Format_Array_ToLower()
     {
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                    },
-                    0,
-                    0,
-                    "-"
-                )
-            )
-            .IsEqualTo(String.Empty);
+        Check.That(HexFormatter.ToLower([ ], 0, 0, "-")).IsEqualTo(String.Empty);
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                    },
-                    0,
-                    0,
-                    "-"
-                )
-            )
-            .IsEqualTo(String.Empty);
+        Check.That(HexFormatter.ToLower([ 0x11 ], 0, 0, "-")).IsEqualTo(String.Empty);
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                    },
-                    0,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("11");
+        Check.That(HexFormatter.ToLower([ 0x11 ], 0, 1, "-")).IsEqualTo("11");
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    0,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("11");
+        Check.That(HexFormatter.ToLower([ 0x11, 0x22, 0x33 ], 0, 1, "-")).IsEqualTo("11");
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    1,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("22");
+        Check.That(HexFormatter.ToLower([ 0x11, 0x22, 0x33 ], 1, 1, "-")).IsEqualTo("22");
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    1,
-                    2,
-                    "-"
-                )
-            )
-            .IsEqualTo("22-33");
+        Check.That(HexFormatter.ToLower([ 0x11, 0x22, 0x33 ], 1, 2, "-")).IsEqualTo("22-33");
 
-        Check.That(
-                HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                    },
-                    0,
-                    7,
-                    "-"
-                )
-            )
+        Check.That(HexFormatter.ToLower([ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77 ], 0, 7, "-"))
             .IsEqualTo("11-22-33-44-55-66-77");
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                    ],
                     0,
                     8,
                     "-"
@@ -161,26 +74,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     9,
                     "-"
@@ -190,26 +88,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     15,
                     "-"
@@ -219,26 +102,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     15,
                     " "
@@ -248,26 +116,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     16,
                     "-"
@@ -277,26 +130,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     "-"
@@ -306,26 +144,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     ":"
@@ -335,26 +158,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     String.Empty
@@ -364,26 +172,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToLower(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     7,
                     10,
                     "-"
@@ -395,113 +188,26 @@ public class Test_HexFormatter
     [Test]
     public void Format_Array_ToUpper()
     {
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                    },
-                    0,
-                    0,
-                    "-"
-                )
-            )
-            .IsEqualTo(String.Empty);
+        Check.That(HexFormatter.ToUpper([ ], 0, 0, "-")).IsEqualTo(String.Empty);
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                    },
-                    0,
-                    0,
-                    "-"
-                )
-            )
-            .IsEqualTo(String.Empty);
+        Check.That(HexFormatter.ToUpper([ 0x11 ], 0, 0, "-")).IsEqualTo(String.Empty);
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                    },
-                    0,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("11");
+        Check.That(HexFormatter.ToUpper([ 0x11 ], 0, 1, "-")).IsEqualTo("11");
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    0,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("11");
+        Check.That(HexFormatter.ToUpper([ 0x11, 0x22, 0x33 ], 0, 1, "-")).IsEqualTo("11");
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    1,
-                    1,
-                    "-"
-                )
-            )
-            .IsEqualTo("22");
+        Check.That(HexFormatter.ToUpper([ 0x11, 0x22, 0x33 ], 1, 1, "-")).IsEqualTo("22");
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
-                    1,
-                    2,
-                    "-"
-                )
-            )
-            .IsEqualTo("22-33");
+        Check.That(HexFormatter.ToUpper([ 0x11, 0x22, 0x33 ], 1, 2, "-")).IsEqualTo("22-33");
 
-        Check.That(
-                HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                    },
-                    0,
-                    7,
-                    "-"
-                )
-            )
+        Check.That(HexFormatter.ToUpper([ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77 ], 0, 7, "-"))
             .IsEqualTo("11-22-33-44-55-66-77");
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                    ],
                     0,
                     8,
                     "-"
@@ -511,26 +217,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     9,
                     "-"
@@ -540,26 +231,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     15,
                     "-"
@@ -569,26 +245,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     15,
                     " "
@@ -598,26 +259,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     16,
                     "-"
@@ -627,26 +273,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     "-"
@@ -656,26 +287,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     ":"
@@ -685,26 +301,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     0,
                     17,
                     String.Empty
@@ -714,26 +315,11 @@ public class Test_HexFormatter
 
         Check.That(
                 HexFormatter.ToUpper(
-                    new Byte[] {
-                        0x11,
-                        0x22,
-                        0x33,
-                        0x44,
-                        0x55,
-                        0x66,
-                        0x77,
-                        0x88,
-                        0x99,
-                        0xAA,
-                        0xBB,
-                        0xCC,
-                        0xDD,
-                        0xEE,
-                        0xFF,
-                        0x11,
-                        0x22,
-                        0x33,
-                    },
+                    [
+                        0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
+                        0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11,
+                        0x22, 0x33,
+                    ],
                     7,
                     10,
                     "-"

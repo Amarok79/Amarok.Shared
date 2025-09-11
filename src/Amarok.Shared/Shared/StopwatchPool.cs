@@ -20,8 +20,8 @@ public static class StopwatchPool
 
 
     /// <summary>
-    ///     Returns a <see cref="Stopwatch"/> either from the pool or a newly created instance. The returned instance
-    ///     is not automatically started.
+    ///     Returns a <see cref="Stopwatch"/> either from the pool or a newly created instance. The
+    ///     returned instance is not automatically started.
     /// </summary>
     public static Stopwatch Rent()
     {
@@ -29,8 +29,8 @@ public static class StopwatchPool
     }
 
     /// <summary>
-    ///     Returns the specified <see cref="Stopwatch"/> to the pool. The <see cref="Stopwatch"/> instance is reset
-    ///     as part of this.
+    ///     Returns the specified <see cref="Stopwatch"/> to the pool. The <see cref="Stopwatch"/> instance
+    ///     is reset as part of this.
     /// </summary>
     /// 
     /// <param name="watch">
@@ -39,7 +39,9 @@ public static class StopwatchPool
     public static void Free(Stopwatch? watch)
     {
         if (watch == null)
+        {
             return;
+        }
 
         watch.Reset();
 

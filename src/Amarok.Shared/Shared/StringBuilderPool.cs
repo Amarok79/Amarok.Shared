@@ -33,8 +33,8 @@ public static class StringBuilderPool
     }
 
     /// <summary>
-    ///     Returns the specified <see cref="StringBuilder"/> to the pool. The <see cref="StringBuilder"/> instance
-    ///     is cleared as part of this.
+    ///     Returns the specified <see cref="StringBuilder"/> to the pool. The <see cref="StringBuilder"/>
+    ///     instance is cleared as part of this.
     /// </summary>
     /// 
     /// <param name="builder">
@@ -43,12 +43,16 @@ public static class StringBuilderPool
     public static void Free(StringBuilder? builder)
     {
         if (builder == null)
+        {
             return;
+        }
 
         builder.Clear();
 
         if (builder.Capacity > MaxCapacity)
+        {
             builder.Capacity = MaxCapacity;
+        }
 
         sPool.Free(builder);
     }

@@ -77,12 +77,12 @@ public class Test_StopwatchPool
     {
         const Int32 count = StopwatchPool.MaxNumberOfItems;
 
-        var objs = new Stopwatch[count * 2];
+        var coll = new Stopwatch[count * 2];
 
         for (var i = 0; i < 100; i++)
         {
-            Parallel.For(0, count, x => objs[x] = StopwatchPool.Rent());
-            Parallel.For(0, count, x => StopwatchPool.Free(objs[x]));
+            Parallel.For(0, count, x => coll[x] = StopwatchPool.Rent());
+            Parallel.For(0, count, x => StopwatchPool.Free(coll[x]));
         }
     }
 }

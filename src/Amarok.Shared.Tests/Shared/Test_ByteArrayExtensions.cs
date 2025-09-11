@@ -16,9 +16,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToHex()
             )
             .IsEqualTo("11-FF-B3");
@@ -29,9 +27,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToLowerHex()
             )
             .IsEqualTo("11-ff-b3");
@@ -42,9 +38,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToUpperHex()
             )
             .IsEqualTo("11-FF-B3");
@@ -56,9 +50,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToHex(":")
             )
             .IsEqualTo("11:FF:B3");
@@ -69,9 +61,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToLowerHex(":")
             )
             .IsEqualTo("11:ff:b3");
@@ -82,9 +72,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToUpperHex(":")
             )
             .IsEqualTo("11:FF:B3");
@@ -96,9 +84,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToHex(1, 2)
             )
             .IsEqualTo("FF-B3");
@@ -109,9 +95,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToLowerHex(1, 2)
             )
             .IsEqualTo("ff-b3");
@@ -122,9 +106,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToUpperHex(1, 2)
             )
             .IsEqualTo("FF-B3");
@@ -136,9 +118,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToHex(1, 2, ":")
             )
             .IsEqualTo("FF:B3");
@@ -149,9 +129,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToLowerHex(1, 2, ":")
             )
             .IsEqualTo("ff:b3");
@@ -162,9 +140,7 @@ public class Test_ByteArrayExtensions
     {
         Check.That(
                 new Byte[] {
-                    0x11,
-                    0xFF,
-                    0xB3,
+                    0x11, 0xFF, 0xB3,
                 }.ToUpperHex(1, 2, ":")
             )
             .IsEqualTo("FF:B3");

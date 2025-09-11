@@ -119,7 +119,7 @@ public class Test_BufferSpan
         [Test]
         public void Exception_When_BufferIsNull()
         {
-            Check.ThatCode(() => BufferSpan.From(null))
+            Check.ThatCode(() => BufferSpan.From(null!))
                 .Throws<ArgumentNullException>()
                 .WithProperty(x => x.ParamName, "buffer");
         }
@@ -132,11 +132,7 @@ public class Test_BufferSpan
         public void Construction_With_LargerArray()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 3);
 
@@ -161,9 +157,7 @@ public class Test_BufferSpan
         public void Construction_With_SameSizeArray()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
             var span = BufferSpan.From(buffer, 3);
 
@@ -211,7 +205,7 @@ public class Test_BufferSpan
         [Test]
         public void Exception_When_BufferIsNull()
         {
-            Check.ThatCode(() => BufferSpan.From(null, 3))
+            Check.ThatCode(() => BufferSpan.From(null!, 3))
                 .Throws<ArgumentNullException>()
                 .WithProperty(x => x.ParamName, "array");
         }
@@ -220,11 +214,7 @@ public class Test_BufferSpan
         public void Exception_When_CountIsNegative()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x11, 0x22, 0x33, 0x44, 0x55,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, -1))
@@ -236,9 +226,7 @@ public class Test_BufferSpan
         public void Exception_When_CountGreaterThanArrayLength()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, 4))
@@ -254,12 +242,7 @@ public class Test_BufferSpan
         public void Construction_With_LargerArray()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 3);
 
@@ -284,9 +267,7 @@ public class Test_BufferSpan
         public void Construction_With_SameSizeArray()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
             var span = BufferSpan.From(buffer, 0, 3);
 
@@ -334,7 +315,7 @@ public class Test_BufferSpan
         [Test]
         public void Exception_When_BufferIsNull()
         {
-            Check.ThatCode(() => BufferSpan.From(null, 1, 3))
+            Check.ThatCode(() => BufferSpan.From(null!, 1, 3))
                 .Throws<ArgumentNullException>()
                 .WithProperty(x => x.ParamName, "array");
         }
@@ -343,11 +324,7 @@ public class Test_BufferSpan
         public void Exception_When_OffsetIsNegative()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x11, 0x22, 0x33, 0x44, 0x55,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, -1, 3))
@@ -359,11 +336,7 @@ public class Test_BufferSpan
         public void Exception_When_CountIsNegative()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x11, 0x22, 0x33, 0x44, 0x55,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, 0, -1))
@@ -375,9 +348,7 @@ public class Test_BufferSpan
         public void Exception_When_OffsetGreaterThanArrayLength()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, 3, 0))
@@ -386,12 +357,10 @@ public class Test_BufferSpan
         }
 
         [Test]
-        public void Exception_When_CountGreatherThanArrayLength()
+        public void Exception_When_CountGreaterThanArrayLength()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, 0, 4))
@@ -400,12 +369,10 @@ public class Test_BufferSpan
         }
 
         [Test]
-        public void Exception_When_OffsetAndCountGreatherThanArrayLength()
+        public void Exception_When_OffsetAndCountGreaterThanArrayLength()
         {
             var buffer = new Byte[] {
-                0x11,
-                0x22,
-                0x33,
+                0x11, 0x22, 0x33,
             };
 
             Check.ThatCode(() => BufferSpan.From(buffer, 1, 3))
@@ -421,12 +388,7 @@ public class Test_BufferSpan
         public void Usage()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 3);
 
@@ -459,12 +421,7 @@ public class Test_BufferSpan
         public void Usage()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 3);
 
@@ -514,17 +471,8 @@ public class Test_BufferSpan
         public void Append_EmptySpan()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-                0x66,
-                0x77,
-                0x88,
-                0x99,
-            };
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+                0x88, 0x99 };
 
             var span   = BufferSpan.From(buffer, 1, 3);
             var data   = BufferSpan.Empty;
@@ -551,17 +499,8 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBuffer()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-                0x66,
-                0x77,
-                0x88,
-                0x99,
-            };
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+                0x88, 0x99 };
 
             var span   = BufferSpan.From(buffer, 1, 3);
             var data   = BufferSpan.From(0xDD, 0xEE);
@@ -580,7 +519,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x11,
+                    0x22,
+                    0x33,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
@@ -590,30 +535,11 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBuffer_DataWithOffset()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-                0x66,
-                0x77,
-                0x88,
-                0x99,
-            };
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+                0x88, 0x99 };
 
-            var span = BufferSpan.From(buffer, 1, 3);
-            var data = BufferSpan.From(
-                new Byte[] {
-                    0xAA,
-                    0xDD,
-                    0xEE,
-                    0xBB,
-                    0xCC,
-                },
-                1,
-                2
-            );
+            var span   = BufferSpan.From(buffer, 1, 3);
+            var data   = BufferSpan.From([ 0xAA, 0xDD, 0xEE, 0xBB, 0xCC ], 1, 2);
             var result = span.Append(data);
 
             Check.That(result.Buffer).IsSameReferenceAs(buffer);
@@ -629,7 +555,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x11,
+                    0x22,
+                    0x33,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
@@ -639,12 +571,7 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBuffer_ExactByteArrayLength()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 3);
             var data   = BufferSpan.From(0xDD, 0xEE);
@@ -663,7 +590,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x11,
+                    0x22,
+                    0x33,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
@@ -673,25 +606,10 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBuffer_ExactByteArrayLength_DataWithOffset()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
-            var span = BufferSpan.From(buffer, 1, 3);
-            var data = BufferSpan.From(
-                new Byte[] {
-                    0xAA,
-                    0xDD,
-                    0xEE,
-                    0xBB,
-                    0xCC,
-                },
-                1,
-                2
-            );
+            var span   = BufferSpan.From(buffer, 1, 3);
+            var data   = BufferSpan.From([ 0xAA, 0xDD, 0xEE, 0xBB, 0xCC ], 1, 2);
             var result = span.Append(data);
 
             Check.That(result.Buffer).IsSameReferenceAs(buffer);
@@ -707,7 +625,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x11, 0x22, 0x33, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x11,
+                    0x22,
+                    0x33,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("11-22-33-DD-EE");
@@ -717,17 +641,8 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBufferConsolidating()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-                0x66,
-                0x77,
-                0x88,
-                0x99,
-            };
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+                0x88, 0x99 };
 
             var span   = BufferSpan.From(buffer, 6, 3);
             var data   = BufferSpan.From(0xDD, 0xEE);
@@ -746,7 +661,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x66,
+                    0x77,
+                    0x88,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("66-77-88-DD-EE");
@@ -756,30 +677,11 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBufferConsolidating_DataWithOffset()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-                0x66,
-                0x77,
-                0x88,
-                0x99,
-            };
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+                0x88, 0x99 };
 
-            var span = BufferSpan.From(buffer, 6, 3);
-            var data = BufferSpan.From(
-                new Byte[] {
-                    0xAA,
-                    0xDD,
-                    0xEE,
-                    0xBB,
-                    0xCC,
-                },
-                1,
-                2
-            );
+            var span   = BufferSpan.From(buffer, 6, 3);
+            var data   = BufferSpan.From([ 0xAA, 0xDD, 0xEE, 0xBB, 0xCC ], 1, 2);
             var result = span.Append(data);
 
             Check.That(result.Buffer).IsSameReferenceAs(buffer);
@@ -795,7 +697,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x66, 0x77, 0x88, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x66,
+                    0x77,
+                    0x88,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("66-77-88-DD-EE");
@@ -805,12 +713,7 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBufferConsolidating_OverlappingBlockCopy()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 2, 3);
             var data   = BufferSpan.From(0xDD, 0xEE);
@@ -829,7 +732,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x22,
+                    0x33,
+                    0x44,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
@@ -839,11 +748,7 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBufferConsolidating_ExactByteArrayLength()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
+                0x00, 0x11, 0x22, 0x33, 0x44,
             };
             var span   = BufferSpan.From(buffer, 2, 3);
             var data   = BufferSpan.From(0xDD, 0xEE);
@@ -862,7 +767,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x22,
+                    0x33,
+                    0x44,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
@@ -872,24 +783,10 @@ public class Test_BufferSpan
         public void Append_ToEndOfExistingBufferConsolidating_ExactByteArrayLength_DataWithOffset()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
+                0x00, 0x11, 0x22, 0x33, 0x44,
             };
-            var span = BufferSpan.From(buffer, 2, 3);
-            var data = BufferSpan.From(
-                new Byte[] {
-                    0xAA,
-                    0xDD,
-                    0xEE,
-                    0xBB,
-                    0xCC,
-                },
-                1,
-                2
-            );
+            var span   = BufferSpan.From(buffer, 2, 3);
+            var data   = BufferSpan.From([ 0xAA, 0xDD, 0xEE, 0xBB, 0xCC ], 1, 2);
             var result = span.Append(data);
 
             Check.That(result.Buffer).IsSameReferenceAs(buffer);
@@ -905,7 +802,13 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x22, 0x33, 0x44, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x22,
+                    0x33,
+                    0x44,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("22-33-44-DD-EE");
@@ -915,63 +818,16 @@ public class Test_BufferSpan
         public void Append_IntoNewBuffer()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
-            };
-            var span = BufferSpan.From(buffer, 2, 3);
-
-            var data = BufferSpan.From(0xAA, 0xBB, 0xCC, 0xDD, 0xEE);
-
-            var result = span.Append(data);
-
-            Check.That(result.Buffer).Not.IsSameReferenceAs(buffer);
-
-            Check.That(result.BufferLength).IsEqualTo(8);
-
-            Check.That(result.FreeBytes).IsEqualTo(0);
-
-            Check.That(result.Offset).IsEqualTo(0);
-
-            Check.That(result.Count).IsEqualTo(8);
-
-            Check.That(result.IsEmpty).IsFalse();
-
-            Check.That(result.ToArray())
-                .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
-                .And.Not.IsSameReferenceAs(span.Buffer);
-
-            Check.That(result.ToString()).IsEqualTo("22-33-44-AA-BB-CC-DD-EE");
-        }
-
-        [Test]
-        public void Append_IntoNewBuffer_DataWithOffset()
-        {
-            var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 2, 3);
 
             var data = BufferSpan.From(
-                new Byte[] {
-                    0x12,
-                    0xAA,
-                    0xBB,
-                    0xCC,
-                    0xDD,
-                    0xEE,
-                    0x21,
-                },
-                1,
-                5
+                0xAA,
+                0xBB,
+                0xCC,
+                0xDD,
+                0xEE
             );
 
             var result = span.Append(data);
@@ -989,7 +845,56 @@ public class Test_BufferSpan
             Check.That(result.IsEmpty).IsFalse();
 
             Check.That(result.ToArray())
-                .ContainsExactly(0x22, 0x33, 0x44, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE)
+                .ContainsExactly(
+                    0x22,
+                    0x33,
+                    0x44,
+                    0xAA,
+                    0xBB,
+                    0xCC,
+                    0xDD,
+                    0xEE
+                )
+                .And.Not.IsSameReferenceAs(span.Buffer);
+
+            Check.That(result.ToString()).IsEqualTo("22-33-44-AA-BB-CC-DD-EE");
+        }
+
+        [Test]
+        public void Append_IntoNewBuffer_DataWithOffset()
+        {
+            var buffer = new Byte[] {
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
+            };
+            var span = BufferSpan.From(buffer, 2, 3);
+
+            var data = BufferSpan.From([ 0x12, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0x21 ], 1, 5);
+
+            var result = span.Append(data);
+
+            Check.That(result.Buffer).Not.IsSameReferenceAs(buffer);
+
+            Check.That(result.BufferLength).IsEqualTo(8);
+
+            Check.That(result.FreeBytes).IsEqualTo(0);
+
+            Check.That(result.Offset).IsEqualTo(0);
+
+            Check.That(result.Count).IsEqualTo(8);
+
+            Check.That(result.IsEmpty).IsFalse();
+
+            Check.That(result.ToArray())
+                .ContainsExactly(
+                    0x22,
+                    0x33,
+                    0x44,
+                    0xAA,
+                    0xBB,
+                    0xCC,
+                    0xDD,
+                    0xEE
+                )
                 .And.Not.IsSameReferenceAs(span.Buffer);
 
             Check.That(result.ToString()).IsEqualTo("22-33-44-AA-BB-CC-DD-EE");
@@ -1000,7 +905,13 @@ public class Test_BufferSpan
         {
             var span = BufferSpan.Empty;
 
-            var data = BufferSpan.From(0xAA, 0xBB, 0xCC, 0xDD, 0xEE);
+            var data = BufferSpan.From(
+                0xAA,
+                0xBB,
+                0xCC,
+                0xDD,
+                0xEE
+            );
 
             var result = span.Append(data);
 
@@ -1016,7 +927,14 @@ public class Test_BufferSpan
 
             Check.That(result.IsEmpty).IsFalse();
 
-            Check.That(result.ToArray()).ContainsExactly(0xAA, 0xBB, 0xCC, 0xDD, 0xEE);
+            Check.That(result.ToArray())
+            .ContainsExactly(
+                0xAA,
+                0xBB,
+                0xCC,
+                0xDD,
+                0xEE
+            );
 
             Check.That(result.ToString()).IsEqualTo("AA-BB-CC-DD-EE");
         }
@@ -1029,12 +947,7 @@ public class Test_BufferSpan
         public void Discard_OneByteFromExistingBuffer()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 3);
             var result = span.Discard(1);
@@ -1060,12 +973,7 @@ public class Test_BufferSpan
         public void Discard_ZeroBytesFromExistingBuffer()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 3);
             var result = span.Discard(0);
@@ -1091,12 +999,7 @@ public class Test_BufferSpan
         public void Discard_AllBytesFromExistingBuffer()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 3);
             var result = span.Discard(3);
@@ -1122,12 +1025,7 @@ public class Test_BufferSpan
         public void Exception_When_BytesIsNegative()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 3);
 
@@ -1138,12 +1036,7 @@ public class Test_BufferSpan
         public void Exception_When_BytesGreaterThanCount()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 3);
 
@@ -1158,12 +1051,7 @@ public class Test_BufferSpan
         public void Slice_OneBytesFromExistingData()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 4);
             var result = span.Slice(3, 1);
@@ -1189,12 +1077,7 @@ public class Test_BufferSpan
         public void Slice_TwoBytesFromExistingData()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 4);
             var result = span.Slice(1, 2);
@@ -1220,12 +1103,7 @@ public class Test_BufferSpan
         public void Slice_AllBytesFromExistingData()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span   = BufferSpan.From(buffer, 1, 4);
             var result = span.Slice(0, 4);
@@ -1251,12 +1129,7 @@ public class Test_BufferSpan
         public void Exception_When_IndexIsNegative()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 4);
 
@@ -1267,12 +1140,7 @@ public class Test_BufferSpan
         public void Exception_When_IndexIsGreaterThanCount()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 4);
 
@@ -1283,12 +1151,7 @@ public class Test_BufferSpan
         public void Exception_When_CountIsNegative()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 4);
 
@@ -1299,12 +1162,7 @@ public class Test_BufferSpan
         public void Exception_When_CountIsGreaterThanCount()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 4);
 
@@ -1315,12 +1173,7 @@ public class Test_BufferSpan
         public void Exception_When_OffsetAndCountIsGreaterThanCount()
         {
             var buffer = new Byte[] {
-                0x00,
-                0x11,
-                0x22,
-                0x33,
-                0x44,
-                0x55,
+                0x00, 0x11, 0x22, 0x33, 0x44, 0x55,
             };
             var span = BufferSpan.From(buffer, 1, 4);
 
@@ -1332,7 +1185,7 @@ public class Test_BufferSpan
     public class Clone
     {
         [Test]
-        public void Empty()
+        public void EmptyTest()
         {
             var org = new BufferSpan();
 
@@ -1344,7 +1197,13 @@ public class Test_BufferSpan
         [Test]
         public void ByteSpan()
         {
-            var org = BufferSpan.From(0x11, 0x22, 0x33, 0x44, 0x55);
+            var org = BufferSpan.From(
+                0x11,
+                0x22,
+                0x33,
+                0x44,
+                0x55
+            );
 
             org = org.Slice(1, 3);
 
@@ -1366,7 +1225,7 @@ public class Test_BufferSpan
     public class TestToString
     {
         [Test]
-        public void Empty()
+        public void EmptyTest()
         {
             var span = BufferSpan.Empty;
 
@@ -1384,7 +1243,15 @@ public class Test_BufferSpan
         [Test]
         public void SevenBytes()
         {
-            var span = BufferSpan.From(0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77);
+            var span = BufferSpan.From(
+                0x11,
+                0x22,
+                0x33,
+                0x44,
+                0x55,
+                0x66,
+                0x77
+            );
 
             Check.That(span.ToString()).IsEqualTo("11-22-33-44-55-66-77");
         }
@@ -1392,7 +1259,16 @@ public class Test_BufferSpan
         [Test]
         public void EightBytes()
         {
-            var span = BufferSpan.From(0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88);
+            var span = BufferSpan.From(
+                0x11,
+                0x22,
+                0x33,
+                0x44,
+                0x55,
+                0x66,
+                0x77,
+                0x88
+            );
 
             Check.That(span.ToString()).IsEqualTo("11-22-33-44-55-66-77-88");
         }
@@ -1471,7 +1347,7 @@ public class Test_BufferSpan
     public class TestToString_Delimiter
     {
         [Test]
-        public void Empty()
+        public void EmptyTest()
         {
             var span = BufferSpan.Empty;
 
@@ -1489,7 +1365,15 @@ public class Test_BufferSpan
         [Test]
         public void SevenBytes()
         {
-            var span = BufferSpan.From(0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77);
+            var span = BufferSpan.From(
+                0x11,
+                0x22,
+                0x33,
+                0x44,
+                0x55,
+                0x66,
+                0x77
+            );
 
             Check.That(span.ToString(":")).IsEqualTo("11:22:33:44:55:66:77");
         }
@@ -1497,7 +1381,16 @@ public class Test_BufferSpan
         [Test]
         public void EightBytes()
         {
-            var span = BufferSpan.From(0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88);
+            var span = BufferSpan.From(
+                0x11,
+                0x22,
+                0x33,
+                0x44,
+                0x55,
+                0x66,
+                0x77,
+                0x88
+            );
 
             Check.That(span.ToString(":")).IsEqualTo("11:22:33:44:55:66:77:88");
         }
