@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Amarok.Shared.sln.DotSettings" />
+    <File Path="Amarok.Shared.v3.ncrunchsolution" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+    <File Path="_cleanup.cmd" />
+  </Folder>
+  <Project Path="src/Amarok.Shared.Tests/Amarok.Shared.Tests.csproj" />
+  <Project Path="src/Amarok.Shared/Amarok.Shared.csproj" />
+</Solution>
