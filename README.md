@@ -1,4 +1,4 @@
-[![NuGet](https://img.shields.io/nuget/v/Amarok.Shared.svg?logo=)](https://www.nuget.org/packages/Amarok.Shared/)
+﻿[![NuGet](https://img.shields.io/nuget/v/Amarok.Shared.svg?logo=)](https://www.nuget.org/packages/Amarok.Shared/)
 
 # Introduction
 
@@ -8,7 +8,7 @@ This library contains various general purpose helpers, utilities and extensions.
 
 The library is redistributed as NuGet package: [Amarok.Shared](https://www.nuget.org/packages/Amarok.Shared/)
 
-The package provides strong-named binaries for *.NET Standard 2.0*, *.NET 6.0*, *.NET 8.0*, and *.NET 9.0*. Tests are performed with *.NET Framework 4.8*, *.NET 6.0*, *.NET 8.0*, and *.NET 9.0*.
+The package provides strong-named binaries for *.NET Standard 2.0*, *.NET 6.0*, *.NET 8.0*, and *.NET 10.0*. Tests are performed with *.NET Framework 4.8*, *.NET 6.0*, *.NET 8.0*, and *.NET 10.0*.
 
 # Types of Interest
 
